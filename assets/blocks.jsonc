@@ -1,0 +1,130 @@
+{
+    "version": "0.0.1",
+    // The index into the blocks array is the uid of the block
+    "blocks": [
+        {
+            // Namespace: urland
+            // Block name: air
+            "name": "urland/air",
+            // Index into the texture atlas
+            "texture_id": 0,
+            // The variations texture_id's are 
+            // `texture_id - texture_id + variations - 1`
+            "variations": 1,
+            "is_solid": false,
+            "is_transparent": true,
+            // blocks that should drop
+            "loot_pool": [],
+            // Level from 0-15. 0 is not mineable
+            "mining_level": 0,
+            "tool": "none"
+        },
+        {
+            "name": "urland/dirt",
+            "texture_id": 1,
+            "variations": 7,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                // "100:..." denotes the probability
+                "100:urland/dirt"
+            ],
+            "mining_level": 1,
+            "tool": "shovel"
+        },
+        {
+            "name": "urland/stone",
+            "texture_id": 20,
+            "variations": 2,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/stone"
+            ],
+            "mining_level": 2,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/ore_coal",
+            "texture_id": 22,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/ore_coal"
+            ],
+            "mining_level": 2,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/ore_cobalt",
+            "texture_id": 23,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/ore_cobalt"
+            ],
+            "mining_level": 6,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/ore_adamant",
+            "texture_id": 24,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/ore_adamant"
+            ],
+            "mining_level": 7,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/oak_planks",
+            "texture_id": 40,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/oak_planks"
+            ],
+            "mining_level": 1,
+            "tool": "axe"
+        },
+        {
+            "name": "urland/stone_tile",
+            "texture_id": 60,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/stone_tile"
+            ],
+            "mining_level": 1,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/polished_tile",
+            "texture_id": 61,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [
+                "100:urland/polished_tile"
+            ],
+            "mining_level": 1,
+            "tool": "pickaxe"
+        },
+        {
+            "name": "urland/bedrock",
+            "texture_id": 62,
+            "variations": 1,
+            "is_solid": true,
+            "is_transparent": false,
+            "loot_pool": [],
+            "mining_level": 0,
+            "tool": "none"
+        }
+    ]
+}

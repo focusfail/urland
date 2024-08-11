@@ -1,0 +1,6 @@
+#ifndef URLAND_CHARACTER_CONTROLLER_H
+#define URLAND_CHARACTER_CONTROLLER_H
+
+struct CharacterController { };
+
+#endif // URLAND_CHARACTER_CONTROLLER_H

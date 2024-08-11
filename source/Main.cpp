@@ -1,3 +1,8 @@
-#include <iostream>
+#include "game/Game.h"
 
-int main() { std::cout << "Hello, World!" << std::endl; }
+int main()
+{
+    Game game;
+    game.Init();
+    game.Run();
+}
