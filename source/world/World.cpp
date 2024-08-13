@@ -13,6 +13,7 @@ void World::Render(const Texture2DAtlas& atlas, const BlockRegistry& br)
     for (size_t i : m_active_chunks) {
         Chunk& chunk = m_chunks->at(i);
         chunk.Render(i, atlas, br);
+        chunk.DrawBoundingBoxes();
     }
 }
 

@@ -19,6 +19,7 @@ public:
     Chunk();
     BlockArray& GetBlockArray();
     void Render(int chunk_index, const Texture2DAtlas& atlas, const BlockRegistry& br);
+    void DrawBoundingBoxes();
     void Update();
     void GenerateBoundingBoxes();
     void PlaceBlock(float block_x, float block_y, Block block);

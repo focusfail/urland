@@ -61,3 +61,4 @@ _deps
 build/
 .cache/ 
 .vscode/
+.VSCodeCounter/

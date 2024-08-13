@@ -99,3 +99,15 @@ void Chunk::GenerateBoundingBoxes()
         }
     }
 }
+
+void Chunk::DrawBoundingBoxes()
+{
+    for (auto bb : m_bbs) {
+        // adjust for bb outline
+        bb.x += 2.0f;
+        bb.y += 2.0f;
+        bb.width -= 2.0f;
+        bb.height -= 2.0f;
+        DrawRectangleRoundedLinesEx(bb, 0.0f, 1, 2.0f, Color {0, 255, 255, 255});
+    }
+}
