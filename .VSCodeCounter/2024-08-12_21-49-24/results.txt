@@ -1,0 +1,68 @@
+Date : 2024-08-12 21:49:24
+Directory : c:\code\urland
+Total : 28 files,  602 codes, 36 comments, 159 blanks, all 797 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| C++                |         24 |        464 |         27 |        150 |        641 |
+| JSON with Comments |          2 |        122 |          9 |          0 |        131 |
+| Markdown           |          2 |         16 |          0 |          9 |         25 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                        |         28 |        602 |         36 |        159 |        797 |
+| . (Files)                                                |          2 |         16 |          0 |          9 |         25 |
+| assets                                                   |          2 |        122 |          9 |          0 |        131 |
+| include                                                  |         15 |        221 |         18 |         72 |        311 |
+| include\components                                       |          4 |         23 |          3 |          9 |         35 |
+| include\core                                             |          4 |         79 |         11 |         22 |        112 |
+| include\game                                             |          1 |         29 |          0 |          9 |         38 |
+| include\systems                                          |          3 |         24 |          0 |         11 |         35 |
+| include\world                                            |          3 |         66 |          4 |         21 |         91 |
+| source                                                   |          9 |        243 |          9 |         78 |        330 |
+| source (Files)                                           |          1 |          7 |          0 |          1 |          8 |
+| source\core                                              |          2 |         70 |          0 |         23 |         93 |
+| source\game                                              |          1 |         62 |          7 |         18 |         87 |
+| source\systems                                           |          3 |         52 |          1 |         19 |         72 |
+| source\world                                             |          2 |         52 |          1 |         17 |         70 |
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                 | language           | code       | comment    | blank      | total      |
++----------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\code\urland\CHANGELOG.md                              | Markdown           |          5 |          0 |          4 |          9 |
+| c:\code\urland\README.md                                 | Markdown           |         11 |          0 |          5 |         16 |
+| c:\code\urland\assets\blocks.jsonc                       | JSON with Comments |        121 |          9 |          0 |        130 |
+| c:\code\urland\assets\settings.jsonc                     | JSON with Comments |          1 |          0 |          0 |          1 |
+| c:\code\urland\include\components\Camera.h               | C++                |          6 |          0 |          2 |          8 |
+| c:\code\urland\include\components\CharacterController.h  | C++                |          4 |          0 |          2 |          6 |
+| c:\code\urland\include\components\RigidBody.h            | C++                |          5 |          0 |          3 |          8 |
+| c:\code\urland\include\components\SpriteComponent.h      | C++                |          8 |          3 |          2 |         13 |
+| c:\code\urland\include\core\Block.h                      | C++                |         10 |          0 |          4 |         14 |
+| c:\code\urland\include\core\BlockRegistry.h              | C++                |         42 |          9 |         10 |         61 |
+| c:\code\urland\include\core\Constants.h                  | C++                |         10 |          2 |          4 |         16 |
+| c:\code\urland\include\core\Texture2DAtlas.h             | C++                |         17 |          0 |          4 |         21 |
+| c:\code\urland\include\game\Game.h                       | C++                |         29 |          0 |          9 |         38 |
+| c:\code\urland\include\systems\CameraSystem.h            | C++                |          8 |          0 |          4 |         12 |
+| c:\code\urland\include\systems\CharacterControlSystem.h  | C++                |          7 |          0 |          3 |         10 |
+| c:\code\urland\include\systems\SpriteRenderSystem.h      | C++                |          9 |          0 |          4 |         13 |
+| c:\code\urland\include\world\Chunk.h                     | C++                |         21 |          0 |          7 |         28 |
+| c:\code\urland\include\world\DrawChunkGrid.h             | C++                |         27 |          4 |          8 |         39 |
+| c:\code\urland\include\world\World.h                     | C++                |         18 |          0 |          6 |         24 |
+| c:\code\urland\source\Main.cpp                           | C++                |          7 |          0 |          1 |          8 |
+| c:\code\urland\source\core\BlockRegisrty.cpp             | C++                |         52 |          0 |         16 |         68 |
+| c:\code\urland\source\core\Texture2DAtlas.cpp            | C++                |         18 |          0 |          7 |         25 |
+| c:\code\urland\source\game\Game.cpp                      | C++                |         62 |          7 |         18 |         87 |
+| c:\code\urland\source\systems\CameraSystem.cpp           | C++                |         16 |          0 |          6 |         22 |
+| c:\code\urland\source\systems\CharacterControlSystem.cpp | C++                |         22 |          1 |          8 |         31 |
+| c:\code\urland\source\systems\SpriteRenderSystem.cpp     | C++                |         14 |          0 |          5 |         19 |
+| c:\code\urland\source\world\Chunk.cpp                    | C++                |         23 |          1 |          9 |         33 |
+| c:\code\urland\source\world\World.cpp                    | C++                |         29 |          0 |          8 |         37 |
+| Total                                                    |                    |        602 |         36 |        159 |        797 |
++----------------------------------------------------------+--------------------+------------+------------+------------+------------+

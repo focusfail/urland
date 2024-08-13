@@ -16,16 +16,19 @@ void CharacterControlSystem::Update(entt::registry& reg, float dt)
     if (IsKeyDown(KEY_A)) { direction.x -= 1.0f; }
     if (IsKeyDown(KEY_D)) { direction.x += 1.0f; }
 
+    float speed = 200.0f;
+    if (IsKeyDown(KEY_LEFT_CONTROL)) speed = speed * 10.0f;
+
     direction = Vector2Normalize(direction);
 
     // Character did not more
     if (Vector2Length(direction) == 0.0f) return;
 
     for (auto entity : view) {
-        auto& rb = view.get<RigidBody>(entity);
+        // auto& rb = view.get<RigidBody>(entity);
 
-        float speed = 300.0f;
-        rb.x += speed * direction.x * dt;
-        rb.y += speed * direction.y * dt;
-    };
+        float dx = speed * direction.x * dt;
+        float dy = speed * direction.y * dt;
+        RigidBody::RegisterMove(reg, entity, dx, dy);
+    }
 }
