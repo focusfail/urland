@@ -62,8 +62,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include/components
     ${CMAKE_SOURCE_DIR}/include/systems
     ${CMAKE_SOURCE_DIR}/include/core
-    ${CMAKE_SOURCE_DIR}/include/world
-    ${CMAKE_SOURCE_DIR}/include/listeners
+    ${CMAKE_SOURCE_DIR}/include/scenes
 )
 
 add_executable(${PROJECT_NAME})

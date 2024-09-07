@@ -1,5 +1,7 @@
 #pragma once
 
+#include "game/GameState.h"
+
 #include <raylib.h>
 
 class Game
@@ -11,6 +13,8 @@ public:
     void Run();
 
 private:
-    void m_Update();
-    void m_Render();
+    void _Update(Scene* scene);
+    void _Render(Scene* scene);
+
+    GameState _game_state;
 };

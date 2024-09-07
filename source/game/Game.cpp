@@ -1,4 +1,5 @@
 #include "game/Game.h"
+#include "scenes/GameScene.h"
 
 void Game::Init()
 {
@@ -6,23 +7,29 @@ void Game::Init()
 
     // Set fps to monitor refresh-rate
     SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
+    _game_state.AddScene(std::make_unique<GameScene>(&_game_state));
 }
 
 void Game::Run()
 {
     while (!WindowShouldClose()) {
-        m_Update();
-        m_Render();
+        Scene* scene = _game_state.GetCurrentScene();
+        _Update(scene);
+        _Render(scene);
     }
 }
 
-void Game::m_Render()
+void Game::_Render(Scene* scene)
 {
     BeginDrawing();
     {
         ClearBackground(BLANK);
+        if (scene) scene->Render();
     }
     EndDrawing();
 }
 
-void Game::m_Update() { }
+void Game::_Update(Scene* scene)
+{
+    if (scene) scene->Update();
+}
