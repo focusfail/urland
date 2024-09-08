@@ -18,6 +18,6 @@ public:
     void SetIndex(ChunkIndex index);
 
 private:
-    BlockArray _blocks;
-    ChunkIndex _index = 0;
+    BlockArray m_blocks;
+    ChunkIndex m_index = 0;
 };

@@ -1,11 +1,19 @@
 #include "scenes/GameScene.h"
 
-GameScene::GameScene(GameState* game_state)
-    : Scene(game_state)
-{
-    _world.Init();
-}
+#include <iostream>
 
-void GameScene::Render() const { _world.Render(); }
+GameScene::GameScene(GameState* game_state, SpriteManager* sprite_manager)
+    : Scene(game_state)
+    , m_sprite_manager(sprite_manager)
+{ }
+
+void GameScene::Init() { m_world.Init(); }
+
+void GameScene::Render() const
+{
+    m_world.Render();
+    Sprite* sprite = m_sprite_manager->GetSprite("blocks", "dirt");
+    sprite->Render();
+}
 
 void GameScene::Update() { }

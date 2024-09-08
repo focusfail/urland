@@ -12,8 +12,8 @@ public:
     World();
     void Init();
     void Update();
-    void Render() const;
+    void Render(Texture2D* blocks_texture) const;
 
 private:
-    std::unique_ptr<ChunkArray> _chunks;
+    std::unique_ptr<ChunkArray> m_chunks;
 };

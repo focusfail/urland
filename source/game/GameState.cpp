@@ -1,15 +1,16 @@
 #include "game/GameState.h"
 
-void GameState::AddScene(unique_ptr<Scene> scene)
+std::pair<Scene*, int> GameState::AddScene(unique_ptr<Scene> scene)
 {
     // Add the scene
-    _scenes.push_back(std::move(scene));
+    m_scenes.push_back(std::move(scene));
+    return std::make_pair(m_scenes.back().get(), static_cast<int>(m_scenes.size()) - 1);
 }
 
-void GameState::SetScene(int scene_index) { _current_scene = scene_index; }
+void GameState::SetScene(int scene_index) { m_current_scene = scene_index; }
 
 Scene* GameState::GetCurrentScene()
 {
-    if (_current_scene >= _scenes.size()) return nullptr;
-    return _scenes.at(_current_scene).get();
+    if (m_current_scene >= m_scenes.size()) return nullptr;
+    return m_scenes.at(m_current_scene).get();
 }

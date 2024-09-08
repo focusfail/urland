@@ -12,6 +12,10 @@ inline int ChunksAsPixels(int chunks) { return chunks * CHUNK_SIZE_BLOCKS * BLOC
 /// @return The length of the chunks as blocks
 inline int ChunksAsBlocks(int chunks) { return chunks * CHUNK_SIZE_BLOCKS; }
 
+/// @brief Convert a length of blocks to a length of pixels
+/// @return The length of the blocks as pixels
+inline int BlocksAsPixels(int blocks) { return blocks * BLOCK_SIZE_PIXELS; }
+
 /// @brief Convert chunk position to chunk index in array
 inline ChunkIndex ChunkPositionToIndex(ChunkCoordinate x, ChunkCoordinate y)
 {

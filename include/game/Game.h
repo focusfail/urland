@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/SpriteManager.h"
 #include "game/GameState.h"
 
 #include <raylib.h>
@@ -7,14 +8,15 @@
 class Game
 {
 public:
-    Game() = default;
+    Game();
 
     void Init();
     void Run();
 
 private:
-    void _Update(Scene* scene);
-    void _Render(Scene* scene);
+    void m_Update(Scene* scene);
+    void m_Render(Scene* scene);
 
-    GameState _game_state;
+    GameState m_game_state;
+    unique_ptr<SpriteManager> m_sprite_manager;
 };
