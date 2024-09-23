@@ -1,9 +1,15 @@
 #pragma once
 
 #include "core/SpriteManager.h"
-#include "game/GameState.h"
+#include "core/World.h"
+
+#include "systems/PlayerControlSystem.h"
+#include "systems/RenderRigidBody.h"
+#include "systems/PhysicsSystem.h"
+#include "systems/CameraFollowPlayerSystem.h"
 
 #include <raylib.h>
+#include <memory>
 
 class Game
 {
@@ -14,9 +20,15 @@ public:
     void Run();
 
 private:
-    void m_Update(Scene* scene);
-    void m_Render(Scene* scene);
+    void m_Update();
+    void m_Render();
 
-    GameState m_game_state;
-    unique_ptr<SpriteManager> m_sprite_manager;
+    std::unique_ptr<SpriteManager> m_sprite_manager;
+    World m_world;
+    Camera2D m_camera;
+    entt::registry m_registry;
+    RenderRigidBodiesSystem m_render_rigidbody;
+    PlayerControlSystem m_player_control;
+    PhysicsSystem m_physics;
+    CameraFollowPlayerSystem m_camera_follow;
 };

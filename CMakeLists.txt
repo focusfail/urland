@@ -22,13 +22,6 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
-    raygui
-    GIT_REPOSITORY "https://github.com/raysan5/raygui.git"
-    GIT_TAG "master"
-    GIT_PROGRESS TRUE
-)
-
-FetchContent_Declare(
     entt
     GIT_REPOSITORY "https://github.com/skypjack/entt.git"
     GIT_TAG "master"
@@ -50,22 +43,24 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(raylib)
-FetchContent_MakeAvailable(raygui)
 FetchContent_MakeAvailable(entt)
 FetchContent_MakeAvailable(noise)
 FetchContent_MakeAvailable(json)
 
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
 include_directories(
-    ${raygui_SOURCE_DIR}/src 
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/include/core
     ${CMAKE_SOURCE_DIR}/include/components
     ${CMAKE_SOURCE_DIR}/include/systems
-    ${CMAKE_SOURCE_DIR}/include/core
-    ${CMAKE_SOURCE_DIR}/include/scenes
+    ${CMAKE_SOURCE_DIR}/include/game
 )
+
+add_compile_definitions(__FLOAT128__)
 
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
+target_compile_options(${PROJECT_NAME} PRIVATE -m64)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib EnTT::EnTT FastNoise nlohmann_json)
-target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets" GAME_VERSION="${PROJECT_VERSION}") 
+target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets" GAME_VERSION="${PROJECT_VERSION}" __FLOAT128__) 

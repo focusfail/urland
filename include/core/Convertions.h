@@ -2,6 +2,7 @@
 
 #include "core/Constants.h"
 
+#include <raylib.h>
 #include <raymath.h>
 
 /// @brief Convert a length of chunks to a length of pixels
@@ -24,7 +25,7 @@ inline ChunkIndex ChunkPositionToIndex(ChunkCoordinate x, ChunkCoordinate y)
 
 inline ChunkIndex ChunkPositionToIndex(ChunkPosition position)
 {
-    return static_cast<ChunkIndex>(position.first * WORLD_WIDTH_CHUNKS + position.second);
+    return static_cast<ChunkIndex>(position.second * WORLD_WIDTH_CHUNKS + position.first);
 }
 
 /// @brief Convert a chunk index to a chunk position
@@ -33,4 +34,21 @@ inline ChunkPosition ChunkIndexToPosition(ChunkIndex index)
     ChunkCoordinate x = index % WORLD_WIDTH_CHUNKS;
     ChunkCoordinate y = index / WORLD_WIDTH_CHUNKS;
     return {x, y};
+}
+
+inline BlockPosition BlockIndexToPositionInChunk(BlockIndex index)
+{
+    BlockCoordinate x = index % CHUNK_SIZE_BLOCKS;
+    BlockCoordinate y = index / CHUNK_SIZE_BLOCKS;
+    return {x, y};
+}
+
+inline std::pair<NDC, NDC> PixelToNDC(ScreenCoordinate x, ScreenCoordinate y, int width, int height)
+{
+    return {2.0f * x / width - 1.0f, 1.0f - (2.0f * y / height)};
+}
+
+inline ChunkPosition WorldToChunkPosition(WorldCoordinate x, WorldCoordinate y)
+{
+    return {floor(x / CHUNK_SIZE_PIXELS), floor(y / CHUNK_SIZE_PIXELS)};
 }

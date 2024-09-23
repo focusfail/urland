@@ -17,7 +17,9 @@
             "loot_pool": [],
             // Level from 0-15. 0 is not mineable
             "mining_level": 0,
-            "tool": "none"
+            "tool": "none",
+            // the lower the value the more friction (0.0-1.0)
+            "friction": 0.0
         },
         {
             "name": "urland/dirt",
@@ -30,7 +32,8 @@
                 "100:urland/dirt"
             ],
             "mining_level": 1,
-            "tool": "shovel"
+            "tool": "shovel",
+            "friction": 0
         },
         {
             "name": "urland/stone",
@@ -42,7 +45,8 @@
                 "100:urland/stone"
             ],
             "mining_level": 2,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/ore_coal",
@@ -54,7 +58,8 @@
                 "100:urland/ore_coal"
             ],
             "mining_level": 2,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/ore_cobalt",
@@ -66,7 +71,8 @@
                 "100:urland/ore_cobalt"
             ],
             "mining_level": 6,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/ore_adamant",
@@ -78,7 +84,8 @@
                 "100:urland/ore_adamant"
             ],
             "mining_level": 7,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/oak_planks",
@@ -90,7 +97,8 @@
                 "100:urland/oak_planks"
             ],
             "mining_level": 1,
-            "tool": "axe"
+            "tool": "axe",
+            "friction": 0
         },
         {
             "name": "urland/stone_tile",
@@ -102,7 +110,8 @@
                 "100:urland/stone_tile"
             ],
             "mining_level": 1,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/polished_tile",
@@ -114,7 +123,8 @@
                 "100:urland/polished_tile"
             ],
             "mining_level": 1,
-            "tool": "pickaxe"
+            "tool": "pickaxe",
+            "friction": 0
         },
         {
             "name": "urland/bedrock",
@@ -124,7 +134,8 @@
             "is_transparent": false,
             "loot_pool": [],
             "mining_level": 0,
-            "tool": "none"
+            "tool": "none",
+            "friction": 0
         }
     ]
 }
