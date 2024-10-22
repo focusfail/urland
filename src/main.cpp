@@ -14,7 +14,6 @@ int main()
 {
     InitWindow(1920, 1080, "Hello");
     rlDisableBackfaceCulling();
-    // rlEnableWireMode();
 
     Camera2D camera = {0};
     camera.target = {960, 540}; // Center of the screen
@@ -43,7 +42,7 @@ int main()
         BeginMode2D(camera);
         {
             world.Render(camera);
-            world.RenderDebugGrid();
+            world.RenderDebugGrid(true, false);
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);
             DrawRectangle(camera.target.x, camera.target.y, 24.0f, 40.0f, BLUE);
         }

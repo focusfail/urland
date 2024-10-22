@@ -27,6 +27,7 @@ private:
     std::vector<int> mLoadedChunks = {};
     Texture2D* mAtlas;
     Material mBlockTextureMaterial;
+    Vector2 mLastOriginChunkPos = {0, 0};
 };
 
 #endif // WORLD_H
