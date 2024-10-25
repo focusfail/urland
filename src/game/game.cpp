@@ -36,7 +36,7 @@ void Game::mRender(float dt) const
         ClearBackground(Color(20, 20, 20, 255));
         BeginMode2D(mCamera);
         {
-            mWorld.Render(mCamera);
+            mWorld.Render(mCamera, DEBUG_UI_VALUES.showChunkCollisionRects);
             mWorld.RenderDebugGrid(DEBUG_UI_VALUES.showChunkOutlines, DEBUG_UI_VALUES.showBlockOutlines);
             // Draw terrain outline
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);

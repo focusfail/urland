@@ -24,6 +24,7 @@ struct DebugUIValues
     bool showBlockOutlines = false;
     bool showChunkOutlines = false;
     bool showYBlockHeight = false;
+    bool showChunkCollisionRects = false;
     GenerationOptions generation = {};
     bool forceUpdate = false;
     bool forceRegenerate = false;
@@ -64,6 +65,7 @@ inline void DrawDebugUI(const Camera2D& camera, float dt)
             if (ImGui::TreeNode("Debug")) {
                 ImGui::Checkbox("Block Outlines", &DEBUG_UI_VALUES.showBlockOutlines);
                 ImGui::Checkbox("Chunk Outlines", &DEBUG_UI_VALUES.showChunkOutlines);
+                ImGui::Checkbox("Chunk Collision Outlines", &DEBUG_UI_VALUES.showChunkCollisionRects);
                 ImGui::Checkbox("Block Height Label", &DEBUG_UI_VALUES.showYBlockHeight);
                 ImGui::TreePop();
             }

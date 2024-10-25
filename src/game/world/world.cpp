@@ -1,10 +1,14 @@
 #include "game/world/world.h"
 
 #include <iostream>
+#include <cassert>
 #include <chrono>
 
 #include "rlgl.h"
 #include "core/conversions.h"
+
+#include "game/world/block.h"
+#include "game/block_info.h"
 
 World::~World() { UnloadMaterial(mBlockTextureMaterial); }
 
@@ -30,6 +34,9 @@ void World::Init(Texture2D& atlas)
     auto timeB = std::chrono::high_resolution_clock::now();
     auto timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(timeB - timeA);
     TraceLog(LOG_INFO, std::format("WORLDGEN: Generated world in: {} ms", timeTaken.count()).c_str());
+
+    assert(!BLOCK_INFO[0 /*air*/].isSolid);
+    assert(BLOCK_INFO[1 /*dirt*/].isSolid);
 }
 
 void World::Generate(GenerationOptions opts)
@@ -49,12 +56,15 @@ void World::Generate(GenerationOptions opts)
     TraceLog(LOG_INFO, std::format("WORLDGEN: Generated world in: {} ms", timeTaken.count()).c_str());
 }
 
-void World::Render(const Camera2D& camera) const
+void World::Render(const Camera2D& camera, bool renderCollision) const
 {
     // rlDisableBackfaceCulling();
     for (int activeChunkIndex : mActiveChunkIndices) {
         const Chunk& chunk = mChunks[activeChunkIndex];
-        if (mShouldRenderChunk(chunk, camera)) { chunk.Render(); }
+        if (mShouldRenderChunk(chunk, camera)) {
+            chunk.Render();
+            if (renderCollision) chunk.RenderCollisionRects();
+        }
     }
 }
 

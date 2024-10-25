@@ -43,13 +43,13 @@ void Generator::GenerateNoise(GenerationOptions opts)
 void Generator::ApplyNoise(Chunk& target)
 {
     Block air = Block();
-    air.id = 1;
+    air.id = 0;
     Block dirt = Block();
-    dirt.id = 2;
+    dirt.id = 1;
     Block grass = Block();
-    grass.id = 3;
+    grass.id = 2;
     Block stone = Block();
-    stone.id = 4;
+    stone.id = 3;
 
     auto& targetBlocks = target.GetBlocks();
     targetBlocks.fill(air);

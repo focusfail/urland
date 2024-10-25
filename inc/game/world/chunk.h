@@ -20,6 +20,7 @@ public:
     void Init(unsigned int index, Texture2D& atlas, Material& material);
     void Load();
     void Render() const;
+    void RenderCollisionRects() const;
     void Update();
     Block& BlockAt(int blockIndex) { return mBlocks[blockIndex]; }
     void PlaceBlock(int blockIndex, Block& block);

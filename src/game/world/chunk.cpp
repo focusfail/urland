@@ -30,9 +30,12 @@ void Chunk::Render() const
     DrawMesh(mMesh, *mMaterial, mMatrix);
 
     // render collision recs
-
+}
+void Chunk::RenderCollisionRects() const
+{
     for (const Rectangle& rect : mCollisionRects) { DrawRectangleLinesEx(rect, 2.0f, GREEN); }
 }
+
 void Chunk::Init(unsigned int index, Texture2D& atlas, Material& material)
 {
     mAtlas = &atlas;
@@ -202,8 +205,7 @@ void Chunk::mGenerateCollisionRects()
 
                     // Add the bounding box
                     mCollisionRects.emplace_back(x * BLOCK_SIZE_PIXELS + chunkPos.x, y * BLOCK_SIZE_PIXELS + chunkPos.y,
-                                                 width * BLOCK_SIZE_PIXELS + chunkPos.x,
-                                                 height * BLOCK_SIZE_PIXELS + chunkPos.y);
+                                                 width * BLOCK_SIZE_PIXELS, height * BLOCK_SIZE_PIXELS);
                 }
             }
         }

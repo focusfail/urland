@@ -19,7 +19,7 @@ public:
 
     void Init(Texture2D& atlas);
     void Generate(GenerationOptions opts = {});
-    void Render(const Camera2D& camera) const;
+    void Render(const Camera2D& camera, bool renderCollision = false) const;
     void RenderDebugGrid(bool chunkGrid = true, bool blockGrid = true) const;
     void Update(Camera2D& camera, int renderDistance = RENDER_SQUARE_RADIUS);
     bool PlaceBlock(Vector2 position, Block& block);
