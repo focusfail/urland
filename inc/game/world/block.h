@@ -3,6 +3,11 @@
 
 #include <cstdint>
 
+struct BlockInfo
+{
+    bool isSolid;
+};
+
 struct Block
 {
     unsigned int id = 1;

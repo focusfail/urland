@@ -22,6 +22,17 @@ inline Vector2 WorldToChunkPosition(const Vector2& worldPosition)
     return {x, y};
 }
 
+inline int WorldToBlockIndex(const Vector2& worldPosition)
+{
+    int localBlockX = ((int)worldPosition.x % CHUNK_SIZE_PIXELS) / BLOCK_SIZE_PIXELS;
+    int localBlockY = ((int)worldPosition.y % CHUNK_SIZE_PIXELS) / BLOCK_SIZE_PIXELS;
+
+    // Step 3: Convert the 2D block position into a 1D block index within the chunk
+    int blockIndex = localBlockY * CHUNK_SIZE_BLOCKS + localBlockX;
+
+    return blockIndex;
+}
+
 inline int ChunkPositionToIndex(const Vector2& chunkPosition)
 {
     return (int)chunkPosition.y * TERRAIN_WIDTH_CHUNKS + (int)chunkPosition.x;

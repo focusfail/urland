@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "game/world/world.h"
+#include "core/sprite_manager.h"
 
 class Game
 {
@@ -12,11 +13,12 @@ public:
     void Run();
 
 private:
-    void mRender() const;
-    void mUpdate();
+    void mRender(float dt) const;
+    void mUpdate(float dt);
 
     World mWorld;
-    Camera2D mCamera;
+    Camera2D mCamera = {0};
+    SpriteManager mSpriteManager;
 };
 
 #endif // GAME_H
