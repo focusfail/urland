@@ -6,6 +6,7 @@
 
 #include "rlgl.h"
 #include "core/conversions.h"
+#include "core/globals.h"
 
 #include "game/world/block.h"
 #include "game/block_info.h"
@@ -105,7 +106,7 @@ void World::RenderDebugGrid(bool chunkGrid, bool blockGrid) const
     }
 }
 
-void World::Update(Camera2D& camera, int renderDistance)
+void World::Update(Camera2D& camera)
 {
     Vector2 originChunkPos = WorldToChunkPosition(camera.target);
 
@@ -120,10 +121,10 @@ void World::Update(Camera2D& camera, int renderDistance)
     }
 
     mActiveChunkIndices.clear();
-    for (int y = originChunkPos.y - renderDistance; y <= originChunkPos.y + renderDistance; y++) {
+    for (int y = originChunkPos.y - RENDER_DISTANCE; y <= originChunkPos.y + RENDER_DISTANCE; y++) {
         if (y < 0 || y >= TERRAIN_HEIGHT_CHUNKS) continue;
 
-        for (int x = originChunkPos.x - renderDistance; x <= originChunkPos.x + renderDistance; x++) {
+        for (int x = originChunkPos.x - RENDER_DISTANCE; x <= originChunkPos.x + RENDER_DISTANCE; x++) {
             if (x < 0 || x >= TERRAIN_WIDTH_CHUNKS) continue;
             int chunkIndex = ChunkPositionToIndex(Vector2 {(float)x, (float)y});
             Chunk& chunk = mChunks[chunkIndex];

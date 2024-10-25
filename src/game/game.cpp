@@ -4,6 +4,7 @@
 #include "rlgl.h"
 #include "rlImGui.h"
 
+#include "core/globals.h"
 #include "util/debug/draw_y_block_height_debug.h"
 #include "util/debug/draw_debug_ui.h"
 
@@ -36,14 +37,14 @@ void Game::mRender(float dt) const
         ClearBackground(Color(20, 20, 20, 255));
         BeginMode2D(mCamera);
         {
-            mWorld.Render(mCamera, DEBUG_UI_VALUES.showChunkCollisionRects);
-            mWorld.RenderDebugGrid(DEBUG_UI_VALUES.showChunkOutlines, DEBUG_UI_VALUES.showBlockOutlines);
+            mWorld.Render(mCamera, DBG_DRAW_COL_REC);
+            mWorld.RenderDebugGrid(DBG_DRAW_CHUNK_BD, DBG_DRAW_BLOCK_BD);
             // Draw terrain outline
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);
             // Render temporary player
             DrawRectangle(mCamera.target.x, mCamera.target.y, 24.0f, 40.0f, BLUE);
 
-            if (DEBUG_UI_VALUES.showYBlockHeight) DrawYBlockHeightDebug();
+            if (DBG_DRAW_BLOCK_Y_LVL) DrawYBlockHeightDebug();
         }
         EndMode2D();
         DrawDebugUI(mCamera, dt);
@@ -54,7 +55,7 @@ void Game::mRender(float dt) const
 
 void Game::mUpdate(float dt)
 {
-    if (IsKeyPressed(KEY_F7)) { DEBUG_UI_VALUES.drawDebugUi = !DEBUG_UI_VALUES.drawDebugUi; }
+    if (IsKeyPressed(KEY_F7)) { DBG_DRAW_DBG_UI = !DBG_DRAW_DBG_UI; }
     if (DEBUG_UI_VALUES.forceRegenerate) mWorld.Generate(DEBUG_UI_VALUES.generation);
     if (DEBUG_UI_VALUES.forceUpdate) mWorld.ForceUpdate();
     float speed = 1000.0f;
@@ -86,5 +87,5 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mWorld.Update(mCamera, DEBUG_UI_VALUES.renderDistance);
+    mWorld.Update(mCamera);
 }

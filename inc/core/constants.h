@@ -30,17 +30,7 @@ inline const int TERRAIN_HEIGHT_PIXELS = TERRAIN_HEIGHT_CHUNKS * CHUNK_SIZE_PIXE
 
 inline const int TEXTURE_ATLAS_SIZE = 16;
 
-// Radius of chunks to render around the player
-inline const int RENDER_SQUARE_RADIUS = 3;
-// Radius of chunks to load around the player
-inline const int UPDATE_SQUARE_RADIUS = 5;
-
 inline const Rectangle WORLD_RECT = {0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS};
 
 inline const int CHUNK_MESH_VERTEX_COUNT = CHUNK_LENGTH_BLOCKS * 4;
-
-// ===========> TerrainGen <===========
-inline const float TERRAINGEN_SURFACE_LEVEL = 0.8f; // The surface is at 20% height
-inline const float TERRAINGEN_HILL_HEIGHT = 36.0f;
-
 #endif // CONSTANTS_H

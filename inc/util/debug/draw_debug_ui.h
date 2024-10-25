@@ -6,6 +6,7 @@
 #include "imgui.h"
 #include "rlgl.h"
 #include "core/constants.h"
+#include "core/globals.h"
 #include "game/world/generator.h"
 #include "game/world/world.h"
 
@@ -15,21 +16,12 @@
 
 struct DebugUIValues
 {
-    bool drawDebugUi = false;
-    bool drawHeaderCollapsed = true;
     bool drawEnabled = false;
-    int drawBlockId = 0;
-    std::vector<const char*> drawBlockTypes = {"0", "1", "2", "3"};
-
-    bool showBlockOutlines = false;
-    bool showChunkOutlines = false;
-    bool showYBlockHeight = false;
-    bool showChunkCollisionRects = false;
-    GenerationOptions generation = {};
     bool forceUpdate = false;
     bool forceRegenerate = false;
-    int renderDistance = RENDER_SQUARE_RADIUS;
-
+    int drawBlockId = 0;
+    std::vector<const char*> drawBlockTypes = {"0", "1", "2", "3"};
+    GenerationOptions generation = {};
     Rectangle area;
 };
 
@@ -37,7 +29,7 @@ inline static DebugUIValues DEBUG_UI_VALUES;
 
 inline void DrawDebugUI(const Camera2D& camera, float dt)
 {
-    if (!DEBUG_UI_VALUES.drawDebugUi) return;
+    if (!DBG_DRAW_DBG_UI) return;
     rlImGuiBegin();
 
     DEBUG_UI_VALUES.forceUpdate = false;
@@ -61,24 +53,24 @@ inline void DrawDebugUI(const Camera2D& camera, float dt)
 
         if (ImGui::CollapsingHeader("World")) {
             DEBUG_UI_VALUES.forceUpdate = ImGui::Button("Force Update");
-            ImGui::SliderInt("Render Distance", &DEBUG_UI_VALUES.renderDistance, 0, 124);
+            ImGui::SliderInt("Render Distance", &RENDER_DISTANCE, 0, 124);
             if (ImGui::TreeNode("Debug")) {
-                ImGui::Checkbox("Block Outlines", &DEBUG_UI_VALUES.showBlockOutlines);
-                ImGui::Checkbox("Chunk Outlines", &DEBUG_UI_VALUES.showChunkOutlines);
-                ImGui::Checkbox("Chunk Collision Outlines", &DEBUG_UI_VALUES.showChunkCollisionRects);
-                ImGui::Checkbox("Block Height Label", &DEBUG_UI_VALUES.showYBlockHeight);
+                ImGui::Checkbox("Block Outlines", &DBG_DRAW_BLOCK_BD);
+                ImGui::Checkbox("Chunk Outlines", &DBG_DRAW_CHUNK_BD);
+                ImGui::Checkbox("Chunk Collision Outlines", &DBG_DRAW_COL_REC);
+                ImGui::Checkbox("Block Height Label", &DBG_DRAW_BLOCK_Y_LVL);
                 ImGui::TreePop();
             }
             if (ImGui::TreeNode("Generation")) {
-                ImGui::DragFloat("Surface Level", &DEBUG_UI_VALUES.generation.surfaceLevel, 0.001f, 0.0f, 1.0f);
+                ImGui::SliderFloat("Surface Level", &DEBUG_UI_VALUES.generation.surfaceLevel, 0.0f, 1.0f);
 
                 // Mountain Noise Settings
                 if (ImGui::TreeNode("Mountain Noise")) {
                     bool changed = false;
                     changed |= ImGui::SliderInt("Octaves", &DEBUG_UI_VALUES.generation.mountainOctaves, 1, 8);
                     changed |= ImGui::SliderFloat("Gain", &DEBUG_UI_VALUES.generation.mountainGain, 0.0f, 1.0f);
-                    changed |= ImGui::DragFloat("Frequency", &DEBUG_UI_VALUES.generation.mountainFrequency, 0.001f,
-                                                0.001f, 0.1f);
+                    changed |=
+                        ImGui::SliderFloat("Frequency", &DEBUG_UI_VALUES.generation.mountainFrequency, 0.0f, 1.0f);
                     changed |= ImGui::InputInt("Seed", &DEBUG_UI_VALUES.generation.mountainSeed);
                     if (changed) DEBUG_UI_VALUES.forceUpdate = true;
                     ImGui::TreePop();
