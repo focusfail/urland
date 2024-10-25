@@ -57,14 +57,33 @@ void World::Generate(GenerationOptions opts)
     TraceLog(LOG_INFO, std::format("WORLDGEN: Generated world in: {} ms", timeTaken.count()).c_str());
 }
 
-void World::Render(const Camera2D& camera, bool renderCollision) const
+void World::Render(const Camera2D& camera) const
 {
-    // rlDisableBackfaceCulling();
     for (int activeChunkIndex : mActiveChunkIndices) {
         const Chunk& chunk = mChunks[activeChunkIndex];
-        if (mShouldRenderChunk(chunk, camera)) {
-            chunk.Render();
-            if (renderCollision) chunk.RenderCollisionRects();
+        if (mShouldRenderChunk(chunk, camera)) { chunk.Render(); }
+    }
+
+    if (!DBG_DRAW_BLOCK_BD && !DBG_DRAW_CHUNK_BD) return;
+
+    for (int activeChunkIndex : mActiveChunkIndices) {
+        const Chunk& chunk = mChunks[activeChunkIndex];
+        Vector2 chunkPos = chunk.GetPosition();
+        chunkPos.x *= CHUNK_SIZE_PIXELS;
+        chunkPos.y *= CHUNK_SIZE_PIXELS;
+
+        if (DBG_DRAW_BLOCK_BD) {
+            // use chunkGrid bool to determine if the border should be drawn
+
+            for (int i = (int)DBG_DRAW_CHUNK_BD; i <= CHUNK_SIZE_BLOCKS; i++) {
+                DrawLine(BLOCK_SIZE_PIXELS * i + chunkPos.x, chunkPos.y, BLOCK_SIZE_PIXELS * i + chunkPos.x,
+                         CHUNK_SIZE_PIXELS + chunkPos.y, WHITE);
+                DrawLine(chunkPos.x, BLOCK_SIZE_PIXELS * i + chunkPos.y, CHUNK_SIZE_PIXELS + chunkPos.x,
+                         BLOCK_SIZE_PIXELS * i + chunkPos.y, WHITE);
+            }
+        }
+        if (DBG_DRAW_CHUNK_BD) {
+            DrawRectangleLinesEx(Rectangle {chunkPos.x, chunkPos.y, CHUNK_SIZE_PIXELS, CHUNK_SIZE_PIXELS}, 3.0f, RED);
         }
     }
 }
@@ -78,32 +97,6 @@ bool World::mShouldRenderChunk(const Chunk& chunk, const Camera2D& camera) const
                          screenBottomRight.y - screenTopLeft.y};
 
     return CheckCollisionRecs(chunkArea, frustum);
-}
-
-void World::RenderDebugGrid(bool chunkGrid, bool blockGrid) const
-{
-    if (!chunkGrid && !blockGrid) return;
-
-    for (int activeChunkIndex : mActiveChunkIndices) {
-        const Chunk& chunk = mChunks[activeChunkIndex];
-        Vector2 chunkPos = chunk.GetPosition();
-        chunkPos.x *= CHUNK_SIZE_PIXELS;
-        chunkPos.y *= CHUNK_SIZE_PIXELS;
-
-        if (blockGrid) {
-            // use chunkGrid bool to determine if the border should be drawn
-
-            for (int i = (int)chunkGrid; i <= CHUNK_SIZE_BLOCKS; i++) {
-                DrawLine(BLOCK_SIZE_PIXELS * i + chunkPos.x, chunkPos.y, BLOCK_SIZE_PIXELS * i + chunkPos.x,
-                         CHUNK_SIZE_PIXELS + chunkPos.y, WHITE);
-                DrawLine(chunkPos.x, BLOCK_SIZE_PIXELS * i + chunkPos.y, CHUNK_SIZE_PIXELS + chunkPos.x,
-                         BLOCK_SIZE_PIXELS * i + chunkPos.y, WHITE);
-            }
-        }
-        if (chunkGrid) {
-            DrawRectangleLinesEx(Rectangle {chunkPos.x, chunkPos.y, CHUNK_SIZE_PIXELS, CHUNK_SIZE_PIXELS}, 3.0f, RED);
-        }
-    }
 }
 
 void World::Update(Camera2D& camera)

@@ -8,6 +8,7 @@
 #include "rlgl.h"
 
 #include "core/conversions.h"
+#include "core/globals.h"
 #include "game/block_info.h"
 
 Chunk::~Chunk()
@@ -28,12 +29,8 @@ void Chunk::Render() const
 {
     if (mAtlas == nullptr) return;
     DrawMesh(mMesh, *mMaterial, mMatrix);
-
-    // render collision recs
-}
-void Chunk::RenderCollisionRects() const
-{
-    for (const Rectangle& rect : mCollisionRects) { DrawRectangleLinesEx(rect, 2.0f, GREEN); }
+    if (DBG_DRAW_COL_REC)
+        for (const Rectangle& rect : mCollisionRects) DrawRectangleLinesEx(rect, 2.0f, GREEN);
 }
 
 void Chunk::Init(unsigned int index, Texture2D& atlas, Material& material)

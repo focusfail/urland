@@ -37,8 +37,7 @@ void Game::mRender(float dt) const
         ClearBackground(Color(20, 20, 20, 255));
         BeginMode2D(mCamera);
         {
-            mWorld.Render(mCamera, DBG_DRAW_COL_REC);
-            mWorld.RenderDebugGrid(DBG_DRAW_CHUNK_BD, DBG_DRAW_BLOCK_BD);
+            mWorld.Render(mCamera);
             // Draw terrain outline
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);
             // Render temporary player
