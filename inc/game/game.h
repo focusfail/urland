@@ -3,6 +3,9 @@
 
 #include "game/world/world.h"
 #include "core/sprite_manager.h"
+#include "systems/player_move_sys.h"
+
+#include "entt/entt.hpp"
 
 class Game
 {
@@ -16,9 +19,13 @@ private:
     void mRender(float dt) const;
     void mUpdate(float dt);
 
+    entt::registry mRegistry;
     World mWorld;
     Camera2D mCamera = {0};
     SpriteManager mSpriteManager;
+
+    // systems
+    PlayerMovementSystem mPlayerMovementSystem;
 };
 
 #endif // GAME_H

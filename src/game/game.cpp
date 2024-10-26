@@ -8,6 +8,9 @@
 #include "util/debug/draw_y_block_height_debug.h"
 #include "util/debug/draw_debug_ui.h"
 
+#include "components/player_tag.h"
+#include "components/rigid_body.h"
+
 Game::Game()
 {
     InitWindow(1920, 1080, "urland - v0.2.0");
@@ -18,6 +21,10 @@ Game::Game()
     mCamera.target = {960, 540};
     mCamera.offset = {960, 540};
     mCamera.zoom = 0.5f;
+
+    auto player = mRegistry.create();
+    mRegistry.emplace<PlayerTag>(player);
+    mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
 }
 
 void Game::Run()
@@ -57,21 +64,6 @@ void Game::mUpdate(float dt)
     if (IsKeyPressed(KEY_F7)) { DBG_DRAW_DBG_UI = !DBG_DRAW_DBG_UI; }
     if (DEBUG_UI_VALUES.forceRegenerate) mWorld.Generate(DEBUG_UI_VALUES.generation);
     if (DEBUG_UI_VALUES.forceUpdate) mWorld.ForceUpdate();
-    float speed = 1000.0f;
-
-    if (IsKeyDown(KEY_LEFT_SHIFT)) speed = 4000.0f;
-
-    Vector2 direction(0.0f, 0.0f);
-
-    if (IsKeyDown(KEY_A)) direction.x -= 1;
-    if (IsKeyDown(KEY_D)) direction.x += 1;
-    if (IsKeyDown(KEY_W)) direction.y -= 1;
-    if (IsKeyDown(KEY_S)) direction.y += 1;
-
-    if (direction.x != 0 || direction.y != 0) { direction = Vector2Normalize(direction); }
-
-    mCamera.target = Vector2Add(mCamera.target, Vector2Scale(direction, speed * dt));
-
     if (IsKeyDown(KEY_F)) rlEnableWireMode();
 
     Vector2 mousePos = GetMousePosition();
@@ -86,5 +78,6 @@ void Game::mUpdate(float dt)
         }
     }
 
+    mPlayerMovementSystem.Update(mRegistry, dt);
     mWorld.Update(mCamera);
 }
