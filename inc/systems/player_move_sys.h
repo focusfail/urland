@@ -2,15 +2,15 @@
 #define PLAYER_MOVE_SYS_H
 
 #include "entt/entt.hpp"
-#include "raymath.h"
 #include "raylib.h"
+#include "raymath.h"
 
 #include "components/player_tag.h"
 #include "components/rigid_body.h"
 
 struct PlayerMovementSystem
 {
-    void Update(entt::registry& reg, float dt)
+    void Update(entt::registry& reg, Camera2D& camera, float dt)
     {
         float speed = 1000.0f;
 
@@ -34,6 +34,9 @@ struct PlayerMovementSystem
 
         rb.velX = direction.x * speed * dt;
         rb.velY = direction.y * speed * dt;
+
+        camera.target.x = rb.x;
+        camera.target.y = rb.y;
     }
 };
 

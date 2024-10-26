@@ -11,6 +11,13 @@
 #include "components/player_tag.h"
 #include "components/rigid_body.h"
 
+// temporary
+void DrawRigidBodies(const entt::registry& reg)
+{
+    auto view = reg.view<RigidBody>();
+    view.each([&](const auto entity, auto& rb) { DrawRectangleRec(rb, BLUE); });
+}
+
 Game::Game()
 {
     InitWindow(1920, 1080, "urland - v0.2.0");
@@ -21,6 +28,8 @@ Game::Game()
     mCamera.target = {960, 540};
     mCamera.offset = {960, 540};
     mCamera.zoom = 0.5f;
+
+    mRigidBodyCollisionSystem.Init(mWorld);
 
     auto player = mRegistry.create();
     mRegistry.emplace<PlayerTag>(player);
@@ -47,8 +56,7 @@ void Game::mRender(float dt) const
             mWorld.Render(mCamera);
             // Draw terrain outline
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);
-            // Render temporary player
-            DrawRectangle(mCamera.target.x, mCamera.target.y, 24.0f, 40.0f, BLUE);
+            DrawRigidBodies(mRegistry);
 
             if (DBG_DRAW_BLOCK_Y_LVL) DrawYBlockHeightDebug();
         }
@@ -78,6 +86,7 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mPlayerMovementSystem.Update(mRegistry, dt);
+    mPlayerMovementSystem.Update(mRegistry, mCamera, dt);
+    mRigidBodyCollisionSystem.Update(mRegistry);
     mWorld.Update(mCamera);
 }

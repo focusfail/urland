@@ -25,6 +25,7 @@ public:
     void PlaceBlock(int blockIndex, Block& block);
     Vector2 GetPosition() const { return mPosition; }
     Vector2 GetPositionPixels() const { return Vector2Scale(mPosition, CHUNK_SIZE_PIXELS); }
+    const std::vector<Rectangle>& GetCollisionRects() const { return mCollisionRects; }
     Rectangle GetAreaPixels() const
     {
         Vector2 pos = GetPositionPixels();

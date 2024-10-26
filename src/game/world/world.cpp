@@ -59,11 +59,13 @@ void World::Generate(GenerationOptions opts)
 
 void World::Render(const Camera2D& camera) const
 {
+    // Draw chunks
     for (int activeChunkIndex : mActiveChunkIndices) {
         const Chunk& chunk = mChunks[activeChunkIndex];
         if (mShouldRenderChunk(chunk, camera)) { chunk.Render(); }
     }
 
+    // Draw debug grids
     if (!DBG_DRAW_BLOCK_BD && !DBG_DRAW_CHUNK_BD) return;
 
     for (int activeChunkIndex : mActiveChunkIndices) {
@@ -83,7 +85,7 @@ void World::Render(const Camera2D& camera) const
             }
         }
         if (DBG_DRAW_CHUNK_BD) {
-            DrawRectangleLinesEx(Rectangle {chunkPos.x, chunkPos.y, CHUNK_SIZE_PIXELS, CHUNK_SIZE_PIXELS}, 3.0f, RED);
+            DrawRectangleLinesEx(Rectangle {chunkPos.x, chunkPos.y, CHUNK_SIZE_PIXELS, CHUNK_SIZE_PIXELS}, 2.0f, RED);
         }
     }
 }

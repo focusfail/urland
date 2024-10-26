@@ -30,7 +30,7 @@ void Chunk::Render() const
     if (mAtlas == nullptr) return;
     DrawMesh(mMesh, *mMaterial, mMatrix);
     if (DBG_DRAW_COL_REC)
-        for (const Rectangle& rect : mCollisionRects) DrawRectangleLinesEx(rect, 2.0f, GREEN);
+        for (const Rectangle& rect : mCollisionRects) DrawRectangleLinesEx(rect, 1.0f, PURPLE);
 }
 
 void Chunk::Init(unsigned int index, Texture2D& atlas, Material& material)

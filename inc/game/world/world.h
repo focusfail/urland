@@ -23,6 +23,7 @@ public:
     void Update(Camera2D& camera);
     bool PlaceBlock(Vector2 position, Block& block);
     void SetForceChunkUpdate(int chunkIndex) { mNextForcedUpdates.insert(chunkIndex); }
+    Chunk& GetChunk(int chunkIndex) { return mChunks.at(chunkIndex); }
     void ForceUpdate() { mForceUpdate = true; }
 
 private:
