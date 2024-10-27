@@ -72,7 +72,11 @@ void Game::mUpdate(float dt)
     if (IsKeyPressed(KEY_F7)) { DBG_DRAW_DBG_UI = !DBG_DRAW_DBG_UI; }
     if (DEBUG_UI_VALUES.forceRegenerate) mWorld.Generate(DEBUG_UI_VALUES.generation);
     if (DEBUG_UI_VALUES.forceUpdate) mWorld.ForceUpdate();
-    if (IsKeyDown(KEY_F)) rlEnableWireMode();
+    if (DBG_DRAW_WIREFRAME)
+        rlEnableWireMode();
+    else {
+        rlDisableWireMode();
+    }
 
     Vector2 mousePos = GetMousePosition();
     // Only perform mouse-world interaction if the mouse is not on top of ui

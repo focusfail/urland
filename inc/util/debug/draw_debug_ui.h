@@ -58,6 +58,7 @@ inline void DrawDebugUI(const Camera2D& camera, float dt)
                 ImGui::Checkbox("Block Outlines", &DBG_DRAW_BLOCK_BD);
                 ImGui::Checkbox("Chunk Outlines", &DBG_DRAW_CHUNK_BD);
                 ImGui::Checkbox("Chunk Collision Outlines", &DBG_DRAW_COL_REC);
+                ImGui::Checkbox("Wireframe", &DBG_DRAW_WIREFRAME);
                 ImGui::Checkbox("Block Height Label", &DBG_DRAW_BLOCK_Y_LVL);
                 ImGui::TreePop();
             }
