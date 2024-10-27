@@ -15,33 +15,53 @@ void RigidBodyCollisionSystem::Update(entt::registry& reg)
         if (!rb.collides) {
             rb.x += rb.velX;
             rb.y += rb.velY;
-
             rb.velX = 0;
             rb.velY = 0;
         }
 
-        // Handle horizontal movement
-        if (rb.velX != 0.0f) { // only check if moved horizontally
+        // Horizontal Movement with Step-Up Logic
+        if (rb.velX != 0.0f) {
             RigidBody horRb = rb;
             horRb.x += rb.velX;
             RigidBody colRb;
+
             if (mCheckCollision(horRb, colRb)) {
-                if (rb.velX > 0) { rb.x = colRb.x - rb.width; }
-                else {
-                    rb.x = colRb.x + colRb.width;
+                // Try to step up if we hit a horizontal obstacle
+                bool canStepUp = false;
+
+                // Create a "step-up" RigidBody shifted up by one block height
+                RigidBody stepUpRb = rb;
+                stepUpRb.x += rb.velX;
+                stepUpRb.y -= BLOCK_SIZE_PIXELS; // Move up by 1 block (adjust to your block height)
+
+                // Check if there's space to step up
+                if (!mCheckCollision(stepUpRb, colRb)) { canStepUp = true; }
+
+                // Step up if possible, otherwise stop horizontal movement
+                if (canStepUp) {
+                    rb.y -= BLOCK_SIZE_PIXELS; // Move up by 1 block height
+                    rb.x += rb.velX;           // Continue moving horizontally
                 }
-                rb.velX = 0.0f;
+                else {
+                    // Handle standard horizontal collision response
+                    if (rb.velX > 0) { rb.x = colRb.x - rb.width; }
+                    else {
+                        rb.x = colRb.x + colRb.width;
+                    }
+                    rb.velX = 0.0f;
+                }
             }
             else {
-                rb.x += rb.velX;
+                rb.x += rb.velX; // No collision, proceed normally
             }
         }
 
         // Handle vertical movement
-        if (rb.velY != 0.0f) { // only check if moved vertically
+        if (rb.velY != 0.0f) {
             RigidBody verRb = rb;
             verRb.y += rb.velY;
             RigidBody colRb;
+
             if (mCheckCollision(verRb, colRb)) {
                 if (rb.velY > 0) { rb.y = colRb.y - rb.height; }
                 else {
@@ -54,7 +74,7 @@ void RigidBodyCollisionSystem::Update(entt::registry& reg)
             }
         }
 
-        // Reset the delta positions
+        // Reset the position delta
         rb.velX = 0.0f;
         rb.velY = 0.0f;
     }

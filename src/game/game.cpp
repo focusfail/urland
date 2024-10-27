@@ -33,7 +33,7 @@ Game::Game()
 
     auto player = mRegistry.create();
     mRegistry.emplace<PlayerTag>(player);
-    mRegistry.emplace<FollowCamera>(player, 2.5f);
+    mRegistry.emplace<FollowCamera>(player, 8.0f);
     mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
 }
 

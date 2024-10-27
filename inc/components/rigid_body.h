@@ -12,6 +12,7 @@ struct RigidBody
     float velX = 0;
     float velY = 0;
     bool collides = true;
+    bool hasGravity = true;
 
     RigidBody() = default;
 
