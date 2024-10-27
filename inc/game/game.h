@@ -5,6 +5,8 @@
 #include "core/sprite_manager.h"
 #include "systems/player_move_sys.h"
 #include "systems/rigidbody_col_sys.h"
+#include "systems/gravity_sys.h"
+#include "systems/follow_camera_sys.h"
 
 #include "entt/entt.hpp"
 
@@ -26,8 +28,10 @@ private:
     SpriteManager mSpriteManager;
 
     // systems
+    GravitySystem mGravitySystem;
     PlayerMovementSystem mPlayerMovementSystem;
     RigidBodyCollisionSystem mRigidBodyCollisionSystem;
+    FollowCameraSystem mFollowCameraSystem;
 };
 
 #endif // GAME_H

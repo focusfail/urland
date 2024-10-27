@@ -33,6 +33,7 @@ Game::Game()
 
     auto player = mRegistry.create();
     mRegistry.emplace<PlayerTag>(player);
+    mRegistry.emplace<FollowCamera>(player, 2.5f);
     mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
 }
 
@@ -90,7 +91,9 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mPlayerMovementSystem.Update(mRegistry, mCamera, dt);
+    mPlayerMovementSystem.Update(mRegistry, dt);
+    mGravitySystem.Update(mRegistry, dt);
     mRigidBodyCollisionSystem.Update(mRegistry);
+    mFollowCameraSystem.Update(mRegistry, mCamera, dt);
     mWorld.Update(mCamera);
 }

@@ -10,7 +10,7 @@
 
 struct PlayerMovementSystem
 {
-    void Update(entt::registry& reg, Camera2D& camera, float dt)
+    void Update(entt::registry& reg, float dt)
     {
         float speed = 1000.0f;
 
@@ -34,9 +34,6 @@ struct PlayerMovementSystem
 
         rb.velX = direction.x * speed * dt;
         rb.velY = direction.y * speed * dt;
-
-        camera.target.x = rb.x;
-        camera.target.y = rb.y;
     }
 };
 
