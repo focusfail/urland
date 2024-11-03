@@ -29,7 +29,7 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
-    fastenoise2
+    fastnoise2
     GIT_REPOSITORY "https://github.com/Auburn/FastNoise2.git"
     GIT_TAG "master"
     GIT_PROGRESS TRUE
@@ -59,7 +59,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 FetchContent_MakeAvailable(entt)
-FetchContent_MakeAvailable(fastenoise2)
+FetchContent_MakeAvailable(fastnoise2)
 FetchContent_MakeAvailable(json)
 FetchContent_MakeAvailable(imgui)
 FetchContent_MakeAvailable(rl_imgui)

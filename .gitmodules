@@ -4,8 +4,8 @@
 [submodule "deps/entt-src"]
 	path = deps/entt-src
 	url = https://github.com/skypjack/entt.git
-[submodule "deps/fastenoise2-src"]
-	path = deps/fastenoise2-src
+[submodule "deps/fastnoise2-src"]
+	path = deps/fastnoise2-src
 	url = https://github.com/Auburn/FastNoise2.git
 [submodule "deps/json-src"]
 	path = deps/json-src
