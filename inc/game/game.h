@@ -1,12 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "game/world/world.h"
-#include "core/sprite_manager.h"
-#include "systems/player_move_sys.h"
-#include "systems/rigidbody_col_sys.h"
-#include "systems/gravity_sys.h"
-#include "systems/follow_camera_sys.h"
+#include "game/world/World.h"
+#include "core/SpriteManager.h"
+#include "systems/PlayerMoveSys.h"
+#include "systems/RigidBodyCollisionSys.h"
+#include "systems/GravitySys.h"
+#include "systems/FollowCameraSys.h"
 
 #include "entt/entt.hpp"
 
@@ -16,10 +16,11 @@ public:
     Game();
     ~Game() = default;
 
+    /// @brief Start the game-loop
     void Run();
 
 private:
-    void mRender(float dt) const;
+    void mRender(float dt) /*const*/;
     void mUpdate(float dt);
 
     entt::registry mRegistry;

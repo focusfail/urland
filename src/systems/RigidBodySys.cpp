@@ -1,6 +1,8 @@
-#include "systems/rigidbody_col_sys.h"
-#include "core/conversions.h"
-#include "core/constants.h"
+#include "systems/RigidBodyCollisionSys.h"
+#include "core/Conversions.h"
+#include "core/Constants.h"
+
+#include <iostream>
 
 void RigidBodyCollisionSystem::Init(World& world) { mWorld = &world; }
 
@@ -19,7 +21,7 @@ void RigidBodyCollisionSystem::Update(entt::registry& reg)
             rb.velY = 0;
         }
 
-        // Horizontal Movement with Step-Up Logic
+        // Horizontal Movement
         if (rb.velX != 0.0f) {
             RigidBody horRb = rb;
             horRb.x += rb.velX;
@@ -63,9 +65,11 @@ void RigidBodyCollisionSystem::Update(entt::registry& reg)
             RigidBody colRb;
 
             if (mCheckCollision(verRb, colRb)) {
-                if (rb.velY > 0) { rb.y = colRb.y - rb.height; }
+                if (rb.velY > 0) {
+                    rb.y = colRb.y - rb.height; // Clamp to the top of the block
+                }
                 else {
-                    rb.y = colRb.y + colRb.height;
+                    rb.y = colRb.y + colRb.height; // Clamp to the bottom of the block
                 }
                 rb.velY = 0.0f;
             }

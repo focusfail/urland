@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 
+/// @brief Rectangular body with collision, position and gravity
 struct RigidBody
 {
     float x = 0;

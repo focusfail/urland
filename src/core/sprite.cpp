@@ -1,4 +1,4 @@
-#include "core/sprite.h"
+#include "core/Sprite.h"
 
 Sprite::Sprite(Texture2D* texture, float x, float y, float width, float height)
     : mTexture(texture)

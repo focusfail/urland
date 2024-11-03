@@ -33,4 +33,17 @@ inline const int TEXTURE_ATLAS_SIZE = 16;
 inline const Rectangle WORLD_RECT = {0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS};
 
 inline const int CHUNK_MESH_VERTEX_COUNT = CHUNK_LENGTH_BLOCKS * 4;
+
+namespace Direction
+{
+inline const int NORTH = 0;
+inline const int UP = 0;
+inline const int EAST = 1;
+inline const int RIGHT = 1;
+inline const int SOUTH = 2;
+inline const int DOWN = 2;
+inline const int WEST = 3;
+inline const int LEFT = 3;
+} // namespace Direction
+
 #endif // CONSTANTS_H

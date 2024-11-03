@@ -7,9 +7,9 @@
 
 #include "raylib.h"
 
-#include "core/constants.h"
-#include "game/world/chunk.h"
-#include "game/world/generator.h"
+#include "core/Constants.h"
+#include "game/world/Chunk.h"
+#include "game/world/Generator.h"
 
 class World
 {

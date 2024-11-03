@@ -1,15 +1,15 @@
-#include "game/world/world.h"
+#include "game/world/World.h"
 
 #include <iostream>
 #include <cassert>
 #include <chrono>
 
 #include "rlgl.h"
-#include "core/conversions.h"
-#include "core/globals.h"
+#include "core/Conversions.h"
+#include "core/Globals.h"
 
-#include "game/world/block.h"
-#include "game/block_info.h"
+#include "game/world/Block.h"
+#include "game/BlockInfo.h"
 
 World::~World() { UnloadMaterial(mBlockTextureMaterial); }
 

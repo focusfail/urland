@@ -1,4 +1,4 @@
-#include "game/world/generator.h"
+#include "game/world/Generator.h"
 #include <chrono>
 #include <format>
 #include <iostream>

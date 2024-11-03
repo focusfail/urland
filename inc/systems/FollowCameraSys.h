@@ -1,15 +1,20 @@
 #ifndef FOLLOW_CAMERA_SYS_H
 #define FOLLOW_CAMERA_SYS_H
 
+#include <iostream>
 #include "raylib.h"
 #include "entt/entt.hpp"
 
-#include "components/follow_camera.h"
-#include "components/player_tag.h"
-#include "components/rigid_body.h"
+#include "components/FollowCamera.h"
+#include "components/PlayerTag.h"
+#include "components/RigidBody.h"
 
 struct FollowCameraSystem
 {
+    /// @brief Updates the camera position to an entity with the FollowCamera component
+    /// @param reg
+    /// @param camera the target camera
+    /// @param dt delta time
     void Update(entt::registry& reg, Camera2D& camera, float dt)
     {
         reg.view<FollowCamera, PlayerTag, RigidBody>().each([&](FollowCamera& fc, RigidBody& rb) {

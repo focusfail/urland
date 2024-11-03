@@ -1,4 +1,4 @@
-#include "game/block_info.h"
+#include "game/BlockInfo.h"
 
 #include <fstream>
 #include <iostream>

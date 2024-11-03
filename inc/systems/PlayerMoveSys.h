@@ -5,8 +5,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
-#include "components/player_tag.h"
-#include "components/rigid_body.h"
+#include "components/PlayerTag.h"
+#include "components/RigidBody.h"
 
 struct PlayerMovementSystem
 {

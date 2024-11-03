@@ -1,4 +1,4 @@
-#include "game/world/chunk.h"
+#include "game/world/Chunk.h"
 
 #include <format>
 #include <vector>
@@ -7,9 +7,9 @@
 #include "raymath.h"
 #include "rlgl.h"
 
-#include "core/conversions.h"
-#include "core/globals.h"
-#include "game/block_info.h"
+#include "core/Conversions.h"
+#include "core/Globals.h"
+#include "game/BlockInfo.h"
 
 Chunk::~Chunk()
 {

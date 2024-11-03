@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "nlohmann/json.hpp"
-#include "world/block.h"
+#include "world/Block.h"
 
 using nlohmann::json;
 using BlockInfoArray = std::vector<BlockInfo>;

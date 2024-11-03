@@ -5,8 +5,8 @@
 
 #include "FastNoise/FastNoise.h"
 
-#include "core/constants.h"
-#include "game/world/chunk.h"
+#include "core/Constants.h"
+#include "game/world/Chunk.h"
 
 struct GenerationOptions
 {

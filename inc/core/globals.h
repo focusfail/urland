@@ -1,3 +1,7 @@
+/*
+Various global variables
+*/
+
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
@@ -9,9 +13,10 @@ extern bool DBG_DRAW_DBG_UI;
 extern bool DBG_DRAW_BLOCK_Y_LVL;
 extern bool DBG_DRAW_WIREFRAME;
 
-// ~~~~~~~~~~~~ RENDER
 extern int RENDER_DISTANCE;
+extern int SELECTED_ENTITY;
 
-// ~~~~~~~~~~~~ GENERATION
+// RigidBodies
+extern float RB_GRAVITY;
 
 #endif // GLOBALS_H

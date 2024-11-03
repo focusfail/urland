@@ -1,4 +1,4 @@
-#include "core/sprite_manager.h"
+#include "core/SpriteManager.h"
 
 #include <rlgl.h>
 #include <format>

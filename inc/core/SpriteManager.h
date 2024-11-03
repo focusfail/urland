@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/sprite.h"
+#include "core/Sprite.h"
 
 #include <raylib.h>
 #include <memory>

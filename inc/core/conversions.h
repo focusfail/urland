@@ -5,7 +5,7 @@
 
 #include "raylib.h"
 
-#include "core/constants.h"
+#include "core/Constants.h"
 
 inline Vector2 BlockIndexToPosition(unsigned int blockIndex)
 {

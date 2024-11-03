@@ -8,8 +8,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
-#include "game/world/block.h"
-#include "core/constants.h"
+#include "game/world/Block.h"
+#include "core/Constants.h"
 
 class Chunk
 {

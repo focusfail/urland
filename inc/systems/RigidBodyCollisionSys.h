@@ -5,9 +5,9 @@
 #include "raylib.h"
 #include "raymath.h"
 
-#include "components/player_tag.h"
-#include "components/rigid_body.h"
-#include "game/world/world.h"
+#include "components/PlayerTag.h"
+#include "components/RigidBody.h"
+#include "game/world/World.h"
 
 class RigidBodyCollisionSystem
 {
