@@ -8,6 +8,7 @@
 #include "core/Globals.h"
 #include "util/debug/DrawYBlockHeightDebug.h"
 #include "util/debug/DrawDebug.h"
+#include "util/PathManager.h"
 
 #include "components/PlayerTag.h"
 #include "components/RigidBody.h"
@@ -29,7 +30,7 @@ Game::Game()
     rlImGuiSetup(true);
 
     // Add block atlas to sprite manager
-    mSpriteManager.AddTexture("blocks", "C:/code/urland/assets/block-sheet.png");
+    mSpriteManager.AddTexture("blocks", GetPath("assets/block-sheet.png"));
     mWorld.Init(*mSpriteManager.GetTexture("blocks"));
 
     float halfDispW = (float)GetScreenWidth() / 2.0f;

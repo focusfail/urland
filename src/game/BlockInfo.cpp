@@ -3,9 +3,12 @@
 #include <fstream>
 #include <iostream>
 
+#include "util/PathManager.h"
+
 BlockInfoArray ParseBlocksJson(const char* filepath)
 {
     BlockInfoArray blocksInfo;
+    std::cout << "INFO: [FILESYS] Parsing json: " << filepath << "\n";
     std::fstream f(filepath);
     json blocksInfoJson = json::parse(f, nullptr, true, true);
 
@@ -33,5 +36,5 @@ std::vector<std::string> ParseNames(const BlockInfoArray blockInfoArr)
 }
 
 // Define and initialize BLOCK_INFO
-const BlockInfoArray BLOCK_INFO = ParseBlocksJson("c:/code/urland/assets/blocks.jsonc");
+const BlockInfoArray BLOCK_INFO = ParseBlocksJson(GetPath("assets/blocks.jsonc").c_str());
 const std::vector<std::string> BLOCK_NAME = ParseNames(BLOCK_INFO);
