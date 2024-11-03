@@ -62,3 +62,4 @@ build/
 .cache/ 
 .vscode/
 .VSCodeCounter/
+.installers/
