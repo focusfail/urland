@@ -22,7 +22,7 @@
         {
             "name": "urland/dirt",
             "texture_id": 1,
-            "variations": 1,
+            "variations": 4,
             "is_solid": true,
             "is_transparent": false,
             "loot_pool": [
@@ -34,8 +34,8 @@
         },
         {
             "name": "urland/grass",
-            "texture_id": 2,
-            "variations": 1,
+            "texture_id": 5,
+            "variations": 2,
             "is_solid": true,
             "is_transparent": false,
             "loot_pool": [
@@ -47,8 +47,8 @@
         },
         {
             "name": "urland/stone",
-            "texture_id": 3,
-            "variations": 1,
+            "texture_id": 7,
+            "variations": 2,
             "is_solid": true,
             "is_transparent": false,
             "loot_pool": [

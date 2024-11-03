@@ -1,8 +1,12 @@
 #include "game/world/Generator.h"
+
 #include <chrono>
 #include <format>
 #include <iostream>
 #include "raylib.h"
+
+#include "game/BlockInfo.h"
+#include "util/RandomUtil.h"
 
 Generator::Generator()
     : mMountainNoise(TERRAIN_WIDTH_BLOCKS)
@@ -76,12 +80,15 @@ void Generator::ApplyNoise(Chunk& target)
             if (y < surfaceHeight) { targetBlocks[blockIndex] = air; }
             else if (y == surfaceHeight) {
                 targetBlocks[blockIndex] = grass;
+                targetBlocks[blockIndex].variant = GetRandomNumber(1, BLOCK_INFO[grass.id].numVariants);
             }
             else if (y <= surfaceHeight + 3) {
                 targetBlocks[blockIndex] = dirt;
+                targetBlocks[blockIndex].variant = GetRandomNumber(1, BLOCK_INFO[dirt.id].numVariants);
             }
             else {
                 targetBlocks[blockIndex] = stone;
+                targetBlocks[blockIndex].variant = GetRandomNumber(1, BLOCK_INFO[stone.id].numVariants);
             }
         }
     }

@@ -1,6 +1,7 @@
 #include "game/Game.h"
 
 #include <string>
+#include <time.h>
 #include "rlgl.h"
 #include "rlImGui.h"
 
@@ -45,6 +46,8 @@ Game::Game()
         mRegistry.emplace<FollowCamera>(player, 8.0f);
         mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
     }
+
+    srand(time(NULL));
 }
 
 void Game::Run()
