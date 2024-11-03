@@ -11,6 +11,9 @@ set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(BUILD_GAMES    OFF CACHE BOOL "" FORCE)
 set(IMGUI_BUILD_EXAMPLES OFF)
 
+set(FETCHCONTENT_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/deps")
+set(FETCHCONTENT_SOURCE_DIR "${FETCHCONTENT_BASE_DIR}")
+
 FetchContent_Declare(
     raylib
     GIT_REPOSITORY "https://github.com/raysan5/raylib.git"
@@ -26,7 +29,7 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
-    noise
+    fastenoise2
     GIT_REPOSITORY "https://github.com/Auburn/FastNoise2.git"
     GIT_TAG "master"
     GIT_PROGRESS TRUE
@@ -56,7 +59,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 FetchContent_MakeAvailable(entt)
-FetchContent_MakeAvailable(noise)
+FetchContent_MakeAvailable(fastenoise2)
 FetchContent_MakeAvailable(json)
 FetchContent_MakeAvailable(imgui)
 FetchContent_MakeAvailable(rl_imgui)

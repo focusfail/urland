@@ -1,0 +1,18 @@
+[submodule "deps/raylib-src"]
+	path = deps/raylib-src
+	url = https://github.com/raysan5/raylib.git
+[submodule "deps/entt-src"]
+	path = deps/entt-src
+	url = https://github.com/skypjack/entt.git
+[submodule "deps/fastenoise2-src"]
+	path = deps/fastenoise2-src
+	url = https://github.com/Auburn/FastNoise2.git
+[submodule "deps/json-src"]
+	path = deps/json-src
+	url = https://github.com/nlohmann/json.git
+[submodule "deps/imgui-src"]
+	path = deps/imgui-src
+	url = https://github.com/ocornut/imgui.git
+[submodule "deps/rl_imgui-src"]
+	path = deps/rl_imgui-src
+	url = https://github.com/raylib-extras/rlImGui.git
