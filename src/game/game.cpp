@@ -106,7 +106,7 @@ void Game::mUpdate(float dt)
         if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
             if (DEBUG_UI_VALUES.drawEnabled) {
                 Block block;
-                block.id = DEBUG_UI_VALUES.drawBlockId;
+                block.id = DEBUG_UI_VALUES.currentBlockIndex;
                 mWorld.PlaceBlock(mousePos, block);
             }
             else {

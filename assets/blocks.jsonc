@@ -22,7 +22,7 @@
         {
             "name": "urland/dirt",
             "texture_id": 1,
-            "variations": 8,
+            "variations": 1,
             "is_solid": true,
             "is_transparent": false,
             "loot_pool": [
@@ -34,7 +34,7 @@
         },
         {
             "name": "urland/grass",
-            "texture_id": 9,
+            "texture_id": 2,
             "variations": 1,
             "is_solid": true,
             "is_transparent": false,
@@ -47,8 +47,8 @@
         },
         {
             "name": "urland/stone",
-            "texture_id": 20,
-            "variations": 2,
+            "texture_id": 3,
+            "variations": 1,
             "is_solid": true,
             "is_transparent": false,
             "loot_pool": [
@@ -56,88 +56,88 @@
             ],
             "mining_level": 2,
             "tool": "pickaxe"
-        },
-        {
-            "name": "urland/ore_coal",
-            "texture_id": 22,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/ore_coal"
-            ],
-            "mining_level": 2,
-            "tool": "pickaxe"
-        },
-        {
-            "name": "urland/ore_cobalt",
-            "texture_id": 23,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/ore_cobalt"
-            ],
-            "mining_level": 6,
-            "tool": "pickaxe"
-        },
-        {
-            "name": "urland/ore_adamant",
-            "texture_id": 24,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/ore_adamant"
-            ],
-            "mining_level": 7,
-            "tool": "pickaxe"
-        },
-        {
-            "name": "urland/oak_planks",
-            "texture_id": 40,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/oak_planks"
-            ],
-            "mining_level": 1,
-            "tool": "axe"
-        },
-        {
-            "name": "urland/stone_tile",
-            "texture_id": 60,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/stone_tile"
-            ],
-            "mining_level": 1,
-            "tool": "pickaxe"
-        },
-        {
-            "name": "urland/polished_tile",
-            "texture_id": 61,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [
-                "100:urland/polished_tile"
-            ],
-            "mining_level": 1,
-            "tool": "pickaxe"
-        },
-        {
-            "name": "urland/bedrock",
-            "texture_id": 62,
-            "variations": 1,
-            "is_solid": true,
-            "is_transparent": false,
-            "loot_pool": [],
-            "mining_level": 0,
-            "tool": "none"
-        }
+        } // ,
+        // {
+        //     "name": "urland/ore_coal",
+        //     "texture_id": 22,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/ore_coal"
+        //     ],
+        //     "mining_level": 2,
+        //     "tool": "pickaxe"
+        // },
+        // {
+        //     "name": "urland/ore_cobalt",
+        //     "texture_id": 23,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/ore_cobalt"
+        //     ],
+        //     "mining_level": 6,
+        //     "tool": "pickaxe"
+        // },
+        // {
+        //     "name": "urland/ore_adamant",
+        //     "texture_id": 24,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/ore_adamant"
+        //     ],
+        //     "mining_level": 7,
+        //     "tool": "pickaxe"
+        // },
+        // {
+        //     "name": "urland/oak_planks",
+        //     "texture_id": 40,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/oak_planks"
+        //     ],
+        //     "mining_level": 1,
+        //     "tool": "axe"
+        // },
+        // {
+        //     "name": "urland/stone_tile",
+        //     "texture_id": 60,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/stone_tile"
+        //     ],
+        //     "mining_level": 1,
+        //     "tool": "pickaxe"
+        // },
+        // {
+        //     "name": "urland/polished_tile",
+        //     "texture_id": 61,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [
+        //         "100:urland/polished_tile"
+        //     ],
+        //     "mining_level": 1,
+        //     "tool": "pickaxe"
+        // },
+        // {
+        //     "name": "urland/bedrock",
+        //     "texture_id": 62,
+        //     "variations": 1,
+        //     "is_solid": true,
+        //     "is_transparent": false,
+        //     "loot_pool": [],
+        //     "mining_level": 0,
+        //     "tool": "none"
+        // }
     ]
 }

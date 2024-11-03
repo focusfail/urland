@@ -10,6 +10,7 @@
 #include "core/Constants.h"
 #include "core/Globals.h"
 #include "game/world/Generator.h"
+#include "game/BlockInfo.h"
 #include "game/world/World.h"
 #include "components/RigidBody.h"
 #include "components/FollowCamera.h"
@@ -23,8 +24,8 @@ struct DebugUIValues
     bool drawEnabled = false;
     bool forceUpdate = false;
     bool forceRegenerate = false;
-    int drawBlockId = 0;
-    std::vector<const char*> drawBlockTypes = {"0", "1", "2", "3"};
+    int currentBlockIndex = 0;
+    std::vector<const char*> blockNamePtrs;
     GenerationOptions generation = {};
     Rectangle area;
     Rectangle entityWindowArea;
@@ -34,6 +35,13 @@ inline static DebugUIValues DEBUG_UI_VALUES;
 
 inline void DrawDebugUI(const Camera2D& camera, float dt)
 {
+    // populate the blocks
+    if (DEBUG_UI_VALUES.blockNamePtrs.empty()) {
+        DEBUG_UI_VALUES.blockNamePtrs.reserve(BLOCK_NAME.size());
+
+        for (auto& name : BLOCK_NAME) { DEBUG_UI_VALUES.blockNamePtrs.push_back(name.c_str()); }
+    }
+
     if (!DBG_DRAW_DBG_UI) return;
 
     DEBUG_UI_VALUES.forceUpdate = false;
@@ -45,13 +53,13 @@ inline void DrawDebugUI(const Camera2D& camera, float dt)
         if (ImGui::CollapsingHeader("Draw")) {
             if (ImGui::Checkbox("Enable drawing", &DEBUG_UI_VALUES.drawEnabled)) {
                 ImGui::BeginDisabled();
-                ImGui::ListBox("Block", &DEBUG_UI_VALUES.drawBlockId, DEBUG_UI_VALUES.drawBlockTypes.data(),
-                               DEBUG_UI_VALUES.drawBlockTypes.size(), 3);
+                ImGui::ListBox("Block", &DEBUG_UI_VALUES.currentBlockIndex, DEBUG_UI_VALUES.blockNamePtrs.data(),
+                               DEBUG_UI_VALUES.blockNamePtrs.size(), 3);
                 ImGui::EndDisabled();
             }
             else {
-                ImGui::ListBox("Block", &DEBUG_UI_VALUES.drawBlockId, DEBUG_UI_VALUES.drawBlockTypes.data(),
-                               DEBUG_UI_VALUES.drawBlockTypes.size(), 3);
+                ImGui::ListBox("Block", &DEBUG_UI_VALUES.currentBlockIndex, DEBUG_UI_VALUES.blockNamePtrs.data(),
+                               DEBUG_UI_VALUES.blockNamePtrs.size(), 3);
             }
         }
 

@@ -81,8 +81,9 @@ void Chunk::mUpdateTexture()
 void Chunk::mBlockTexUpdate(std::array<float, CHUNK_MESH_VERTEX_COUNT * 2>& texcoords, int& vertexIndex, int blockIndex)
 {
     float padding = 0.001f;
-    float texX = (mBlocks[blockIndex].id % (mAtlas->width / BLOCK_SIZE_PIXELS)) * mTextureUnit;
-    float texY = (mBlocks[blockIndex].id / (mAtlas->width / BLOCK_SIZE_PIXELS)) * mTextureUnit;
+    int texID = BLOCK_INFO[mBlocks[blockIndex].id].textureID;
+    float texX = (texID % (mAtlas->width / BLOCK_SIZE_PIXELS)) * mTextureUnit;
+    float texY = (texID / (mAtlas->width / BLOCK_SIZE_PIXELS)) * mTextureUnit;
 
     float texMaxX = texX + mTextureUnit - padding;
     float texMaxY = texY + mTextureUnit - padding;
