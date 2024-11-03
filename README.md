@@ -45,4 +45,4 @@ A terraria-like game written in C++. The game is not meant to become a complete 
 
 ## Demo
 
-![Demo Image - urland 0.2.0](https://github.com/focusfail/urland/blob/main/demo/DemoImg.png)
+![Demo Image - urland 0.2.0](https://github.com/focusfail/urland/blob/master/demo/DemoImg.png)
