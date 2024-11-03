@@ -30,9 +30,13 @@ A terraria-like game written in C++. The game is not meant to become a complete 
 2. Building
 
     ```bash
-    cmake .
+    cmake -G "MinGW Makefiles" -DCMAKE_C_COMPILER:FILEPATH="/path/to/clang.exe" -DCMAKE_CXX_COMPILER:FILEPATH="/path/to/clang++.exe" -S . -B ./build
     ```
-3. Run
+3. Compile
+    ```bash
+    cmake --build .\build\ --config Release
+    ```
+4. Run
     ```bash
     ./build/urland.exe
     ```
