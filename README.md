@@ -9,7 +9,7 @@ A terraria-like game written in C++. The game is not meant to become a complete 
 - Simple entity viewer allows editing entities' components
 - Debug window with many functions
 - Chunked rendering & update
-- json format for block description
+- Json format for block description
 
 ## Building for Windows
 
@@ -31,6 +31,10 @@ A terraria-like game written in C++. The game is not meant to become a complete 
 
     ```bash
     cmake .
+    ```
+3. Run
+    ```bash
+    ./build/urland.exe
     ```
 
 ## Controls
