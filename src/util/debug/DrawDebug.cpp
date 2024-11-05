@@ -129,7 +129,7 @@ bool CheckEntityClicked(float pX, float pY, entt::entity& outEntity, entt::regis
 
 void DrawSelectedEntityWindow(entt::registry& reg)
 {
-    if (SELECTED_ENTITY < 0) return;
+    if (SELECTED_ENTITY < 0 || !DBG_DRAW_DBG_UI) return;
 
     RigidBody& rb = reg.get<RigidBody>((entt::entity)SELECTED_ENTITY);
     FollowCamera* fc = reg.try_get<FollowCamera>((entt::entity)SELECTED_ENTITY);
