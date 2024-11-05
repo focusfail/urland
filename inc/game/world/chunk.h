@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <array>
+#include <unordered_set>
 #include <vector>
 
 #include "raylib.h"
@@ -23,6 +24,7 @@ public:
     void Update();
     Block& BlockAt(int blockIndex) { return mBlocks[blockIndex]; }
     void PlaceBlock(int blockIndex, Block& block);
+    void MineBlock(int blockIndex, float damage);
     Vector2 GetPosition() const { return mPosition; }
     Vector2 GetPositionPixels() const { return Vector2Scale(mPosition, CHUNK_SIZE_PIXELS); }
     const std::vector<Rectangle>& GetCollisionRects() const { return mCollisionRects; }
@@ -44,6 +46,7 @@ public:
     std::array<Block, CHUNK_LENGTH_BLOCKS>& GetBlocks() { return mBlocks; };
     void SetMeshIsDirty() { mMeshIsDirty = true; }
     void SetCollisionIsDirty() { mCollisionIsDirty = true; }
+    void SetBlocksAreDirty() { mBlocksAreDirty = true; }
 
 private:
     void mGenerateMesh();
@@ -58,9 +61,11 @@ private:
     Matrix mMatrix;
     Material* mMaterial;
     Texture2D* mAtlas;
+    std::unordered_set<int> mDamagedBlocks = {};
     float mTextureUnit = 0.0f;
     bool mMeshIsDirty = true;
     bool mCollisionIsDirty = true;
+    bool mBlocksAreDirty = true;
 };
 
 #endif // CHUNK_H

@@ -23,6 +23,24 @@ void Chunk::Update()
 {
     if (mMeshIsDirty) mUpdateTexture();
     if (mCollisionIsDirty) mGenerateCollisionRects();
+
+    if (!mBlocksAreDirty) return;
+
+    for (int blockIndex = 0; blockIndex < CHUNK_LENGTH_BLOCKS; blockIndex++) {
+        Block& block = mBlocks[blockIndex];
+        if (block.health <= 0.0f) {
+            // Block was broken
+            // set block to be air
+            block.id = 0;
+            block.health = 1.0f;
+            block.variant = 1;
+            mMeshIsDirty = true;
+            mCollisionIsDirty = true;
+            mDamagedBlocks.erase(blockIndex);
+        }
+    }
+
+    mBlocksAreDirty = false;
 }
 
 void Chunk::Render() const
@@ -31,6 +49,13 @@ void Chunk::Render() const
     DrawMesh(mMesh, *mMaterial, mMatrix);
     if (DBG_DRAW_COL_REC)
         for (const Rectangle& rect : mCollisionRects) DrawRectangleLinesEx(rect, 1.0f, PURPLE);
+
+    for (int block : mDamagedBlocks) {
+        float health = mBlocks[block].health;
+        auto [bX, bY] = Vector2Scale(BlockIndexToPosition(block), BLOCK_SIZE_PIXELS) + GetPositionPixels();
+        DrawRectanglePro({bX, bY, BLOCK_SIZE_PIXELS, BLOCK_SIZE_PIXELS}, {0, 0}, 0.0f,
+                         Color {0, 0, 0, (unsigned char)(255 * (1.0f - health))});
+    }
 }
 
 void Chunk::Init(unsigned int index, Texture2D& atlas, Material& material)
@@ -46,6 +71,25 @@ void Chunk::Load()
 {
     mGenerateMesh();
     mGenerateCollisionRects();
+}
+
+void Chunk::MineBlock(int blockIndex, float damage)
+{
+    Block& block = mBlocks[blockIndex];
+    block.health -= damage;
+
+    if (block.health <= 0.0f) {
+        block.id = 0;
+        block.health = 1.0f;
+        block.variant = 1;
+        mMeshIsDirty = true;
+        mCollisionIsDirty = true;
+    }
+    else {
+        mDamagedBlocks.insert(blockIndex);
+    }
+
+    mBlocksAreDirty = true;
 }
 
 void Chunk::PlaceBlock(int blockIndex, Block& block)
@@ -77,7 +121,6 @@ void Chunk::mUpdateTexture()
     UpdateMeshBuffer(mMesh, 1, texcoords.data(), texcoords.size() * sizeof(float), 0);
     mMeshIsDirty = false;
 }
-
 void Chunk::mBlockTexUpdate(std::array<float, CHUNK_MESH_VERTEX_COUNT * 2>& texcoords, int& vertexIndex, int blockIndex)
 {
     float padding = 0.001f;
@@ -99,7 +142,6 @@ void Chunk::mBlockTexUpdate(std::array<float, CHUNK_MESH_VERTEX_COUNT * 2>& texc
     texcoords[vertexIndex * 2 + 6] = texX + padding;
     texcoords[vertexIndex * 2 + 7] = texMaxY;
 }
-
 void Chunk::mGenerateMesh()
 {
     //! maybe use GenMeshPlane() to generate chunk mesh
