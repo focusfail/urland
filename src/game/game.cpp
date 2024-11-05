@@ -12,6 +12,7 @@
 
 #include "components/PlayerTag.h"
 #include "components/RigidBody.h"
+#include "components/Stats.h"
 
 // Temporary function for rendering RigidBodies
 void DrawRigidBodies(const entt::registry& reg)
@@ -47,6 +48,7 @@ Game::Game()
         mRegistry.emplace<PlayerTag>(player);
         mRegistry.emplace<FollowCamera>(player, 8.0f);
         mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
+        mRegistry.emplace<Stats>(player);
         // Set the player
         mPlayerSystem.player = player;
     }
