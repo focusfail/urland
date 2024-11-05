@@ -128,7 +128,7 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mPlayerSystem.Update(mRegistry, dt);
+    mPlayerSystem.ApplyMovement(mRegistry, dt);
     mGravitySystem.Update(mRegistry, dt);
     mRigidBodyCollisionSystem.Update(mRegistry);
     mFollowCameraSystem.Update(mRegistry, mCamera, dt);
