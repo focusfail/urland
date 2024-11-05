@@ -92,7 +92,7 @@ bool RigidBodyCollisionSystem::mCheckCollision(const RigidBody& rb, RigidBody& o
     for (int chunkY = startChunkY; chunkY <= endChunkY; ++chunkY) {
         for (int chunkX = startChunkX; chunkX <= endChunkX; ++chunkX) {
             size_t chunkIndex = ChunkPositionToIndex(Vector2 {(float)chunkX, (float)chunkY});
-            if (chunkIndex >= 0 && chunkIndex < CHUNK_LENGTH_BLOCKS) {
+            if (chunkIndex >= 0 && chunkIndex < TERRAIN_LENGTH_CHUNKS) {
                 const Chunk& chunk = mWorld->GetChunk(chunkIndex);
                 const auto& rects = chunk.GetCollisionRects();
 
