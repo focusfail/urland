@@ -20,5 +20,7 @@ void PlayerSystem::Update(entt::registry& reg, float dt)
     RigidBody& rb = reg.get<RigidBody>(player);
 
     rb.velX = direction.x * speed * dt;
-    rb.velY = direction.y * speed * dt;
+
+    // Only apply vertical movement if the player has no gravity so he can fly.
+    if (!rb.hasGravity) { rb.velY = direction.y * speed * dt; }
 }
