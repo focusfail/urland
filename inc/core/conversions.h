@@ -15,6 +15,9 @@ inline Vector2 BlockIndexToPosition(unsigned int blockIndex)
     return {x, y};
 }
 
+/// @brief Convert a world-position to the position of its chunk
+/// @param worldPosition
+/// @return Chunk position
 inline Vector2 WorldToChunkPosition(const Vector2& worldPosition)
 {
     float x = floor(worldPosition.x / CHUNK_SIZE_PIXELS);
@@ -35,7 +38,7 @@ inline int WorldToBlockIndex(const Vector2& worldPosition)
 
 inline int ChunkPositionToIndex(const Vector2& chunkPosition)
 {
-    return (int)chunkPosition.y * TERRAIN_WIDTH_CHUNKS + (int)chunkPosition.x;
+    return chunkPosition.y * TERRAIN_WIDTH_CHUNKS + chunkPosition.x;
 }
 
 inline Vector2 ChunkIndexToPosition(int chunkIndex)

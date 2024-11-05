@@ -29,15 +29,16 @@ Game::Game()
     InitWindow(1920, 1080, "urland - v0.2.0");
     rlImGuiSetup(true);
 
-    // Add block atlas to sprite manager
-    mSpriteManager.AddTexture("blocks", GetPath("assets/block-sheet.png"));
-    mWorld.Init(*mSpriteManager.GetTexture("blocks"));
-
+    // Setup the Camera
     float halfDispW = (float)GetScreenWidth() / 2.0f;
     float halfDispH = (float)GetScreenHeight() / 2.0f;
     mCamera.target = {halfDispW, halfDispH};
     mCamera.offset = {halfDispW, halfDispH};
     mCamera.zoom = 0.5f;
+
+    // Add block atlas to sprite manager
+    mSpriteManager.AddTexture("blocks", GetPath("assets/block-sheet.png"));
+    mWorld.Init(*mSpriteManager.GetTexture("blocks"));
 
     mRigidBodyCollisionSystem.Init(mWorld);
 
