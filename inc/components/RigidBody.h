@@ -17,6 +17,8 @@ struct RigidBody
 
     RigidBody() = default;
 
+    Vector2 GetCenter() const { return {x + width / 2.0f, y + height / 2.0f}; }
+
     RigidBody(float x, float y, float w, float h)
         : x(x)
         , y(y)
