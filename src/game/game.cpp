@@ -47,6 +47,8 @@ Game::Game()
         mRegistry.emplace<PlayerTag>(player);
         mRegistry.emplace<FollowCamera>(player, 8.0f);
         mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
+        // Set the player
+        mPlayerSystem.player = player;
     }
 
     srand(time(NULL));
@@ -124,7 +126,7 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mPlayerMovementSystem.Update(mRegistry, dt);
+    mPlayerSystem.Update(mRegistry, dt);
     mGravitySystem.Update(mRegistry, dt);
     mRigidBodyCollisionSystem.Update(mRegistry);
     mFollowCameraSystem.Update(mRegistry, mCamera, dt);

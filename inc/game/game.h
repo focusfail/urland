@@ -3,7 +3,7 @@
 
 #include "game/world/World.h"
 #include "core/SpriteManager.h"
-#include "systems/PlayerMoveSys.h"
+#include "systems/PlayerSys.h"
 #include "systems/RigidBodyCollisionSys.h"
 #include "systems/GravitySys.h"
 #include "systems/FollowCameraSys.h"
@@ -30,7 +30,7 @@ private:
 
     // systems
     GravitySystem mGravitySystem;
-    PlayerMovementSystem mPlayerMovementSystem;
+    PlayerSystem mPlayerSystem;
     RigidBodyCollisionSystem mRigidBodyCollisionSystem;
     FollowCameraSystem mFollowCameraSystem;
 };
