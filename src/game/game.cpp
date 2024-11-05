@@ -6,6 +6,7 @@
 #include "rlImGui.h"
 
 #include "core/Globals.h"
+#include "core/Constants.h"
 #include "util/debug/DrawYBlockHeightDebug.h"
 #include "util/debug/DrawDebug.h"
 #include "util/PathManager.h"
@@ -27,7 +28,8 @@ void DrawRigidBodies(const entt::registry& reg)
 
 Game::Game()
 {
-    InitWindow(1920, 1080, "urland - v0.2.0");
+    std::string title = (std::string) "urland - " + GAME_VERSION;
+    InitWindow(1920, 1080, title.c_str());
     rlImGuiSetup(true);
 
     // Setup the Camera
