@@ -93,8 +93,8 @@ void Game::mRender(float dt) // const
 void Game::mUpdate(float dt)
 {
     if (IsKeyPressed(KEY_F7)) { DBG_DRAW_DBG_UI = !DBG_DRAW_DBG_UI; }
-    if (DEBUG_UI_VALUES.forceRegenerate) mWorld.Generate(DEBUG_UI_VALUES.generation);
-    if (DEBUG_UI_VALUES.forceUpdate) mWorld.ForceUpdate();
+    if (DBG_UI_VALUES.forceRegenerate) mWorld.Generate(DBG_UI_VALUES.generation);
+    if (DBG_UI_VALUES.forceUpdate) mWorld.ForceUpdate();
     if (DBG_DRAW_WIREFRAME)
         rlEnableWireMode();
     else {
@@ -103,14 +103,14 @@ void Game::mUpdate(float dt)
 
     Vector2 mousePos = GetMousePosition();
     // Only perform mouse-world interaction if the mouse is not on top of ui
-    if (!CheckCollisionPointRec(mousePos, DEBUG_UI_VALUES.area) &&
-        !CheckCollisionPointRec(mousePos, DEBUG_UI_VALUES.entityWindowArea)) {
+    if (!CheckCollisionPointRec(mousePos, DBG_UI_VALUES.area) &&
+        !CheckCollisionPointRec(mousePos, DBG_UI_VALUES.entityWindowArea)) {
         mousePos = GetScreenToWorld2D(mousePos, mCamera);
         mCamera.zoom = Clamp(mCamera.zoom + GetMouseWheelMove() * 0.02f, 0.01f, 3.0f);
         if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-            if (DEBUG_UI_VALUES.drawEnabled) {
+            if (DBG_UI_VALUES.drawEnabled) {
                 Block block;
-                block.id = DEBUG_UI_VALUES.currentBlockIndex;
+                block.id = DBG_UI_VALUES.currentBlockIndex;
                 mWorld.PlaceBlock(mousePos, block);
             }
             else {
