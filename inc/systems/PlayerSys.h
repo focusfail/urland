@@ -1,11 +1,6 @@
 #ifndef PLAYER_SYS
 #define PLAYER_SYS
 #include "entt/entt.hpp"
-#include "raylib.h"
-#include "raymath.h"
-
-#include "components/PlayerTag.h"
-#include "components/RigidBody.h"
 
 struct PlayerSystem
 {
