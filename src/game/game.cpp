@@ -43,15 +43,15 @@ Game::Game()
 
     mRigidBodyCollisionSystem.Init(mWorld);
 
-    { // Create player entity
-        auto player = mRegistry.create();
-        mRegistry.emplace<PlayerTag>(player);
-        mRegistry.emplace<FollowCamera>(player, 8.0f);
-        mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
-        mRegistry.emplace<Stats>(player);
-        // Set the player
-        mPlayerSystem.player = player;
-    }
+    // Create player entity
+    auto player = mRegistry.create();
+    mRegistry.emplace<PlayerTag>(player);
+    mRegistry.emplace<FollowCamera>(player, 8.0f);
+    mRegistry.emplace<RigidBody>(player, .0f, .0f, 24.0f, 40.0f);
+    mRegistry.emplace<Stats>(player);
+
+    // Setup the player system
+    mPlayerSystem.Init(mWorld, mCamera, player);
 
     srand(time(NULL));
 }
@@ -77,6 +77,8 @@ void Game::mRender(float dt) // const
             // Draw terrain outline
             DrawRectangleLines(0, 0, TERRAIN_WIDTH_PIXELS, TERRAIN_HEIGHT_PIXELS, RED);
             DrawRigidBodies(mRegistry);
+
+            mPlayerSystem.RenderDbg(mRegistry);
 
             if (DBG_DRAW_BLOCK_Y_LVL) DrawYBlockHeightDebug();
         }
@@ -128,7 +130,7 @@ void Game::mUpdate(float dt)
         }
     }
 
-    mPlayerSystem.ApplyMovement(mRegistry, dt);
+    mPlayerSystem.Update(mRegistry, dt);
     mGravitySystem.Update(mRegistry, dt);
     mRigidBodyCollisionSystem.Update(mRegistry);
     mFollowCameraSystem.Update(mRegistry, mCamera, dt);
