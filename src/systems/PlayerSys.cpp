@@ -79,7 +79,7 @@ void PlayerSystem::Interact(RigidBody& rb, Stats& stats, float dt)
         Block& currBlock = currChunk.BlockAt(blockIndex);
 
         if (BLOCK_INFO[currBlock.id].isSolid) {
-            currChunk.MineBlock(blockIndex, 0.1f);
+            currChunk.MineBlock(blockIndex, 0.4f);
             mWorldPtr->SetForceChunkUpdate(chunkIndex);
             break;
         }
