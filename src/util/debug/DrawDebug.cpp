@@ -131,8 +131,10 @@ void DrawSelectedEntityWindow(entt::registry& reg)
 {
     if (SELECTED_ENTITY < 0 || !DBG_DRAW_DBG_UI) return;
 
-    RigidBody& rb = reg.get<RigidBody>((entt::entity)SELECTED_ENTITY);
-    FollowCamera* fc = reg.try_get<FollowCamera>((entt::entity)SELECTED_ENTITY);
+    entt::entity selectedEntity = (entt::entity)SELECTED_ENTITY;
+    RigidBody& rb = reg.get<RigidBody>(selectedEntity);
+    FollowCamera* fc = reg.try_get<FollowCamera>(selectedEntity);
+    Stats* stats = reg.try_get<Stats>(selectedEntity);
 
     float rbPosition[2] = {rb.x, rb.y};
     int rbShape[2] = {(int)rb.width, (int)rb.height};
@@ -143,6 +145,14 @@ void DrawSelectedEntityWindow(entt::registry& reg)
         ImVec2 pos = ImGui::GetWindowPos();
         DBG_UI_VALUES.entityWindowArea = {pos.x, pos.y, ImGui::GetWindowWidth(), ImGui::GetWindowHeight()};
 
+        if (stats) {
+            if (ImGui::CollapsingHeader("Stats")) {
+                ImGui::LabelText("Health", "(%.1f)", stats->health);
+                ImGui::LabelText("Reach", "(%.1f)", stats->reach);
+                ImGui::LabelText("Speed", "(%.1f)", stats->speed);
+                ImGui::LabelText("Sprint multiplier", "(%.1f)", stats->sprintMul);
+            }
+        }
         if (ImGui::CollapsingHeader("RigidBody")) {
             ImGui::DragFloat2("Position X, Y", rbPosition, 1.0f, 0.0f, TERRAIN_WIDTH_PIXELS);
             ImGui::SliderInt2("Width, Height", rbShape, 0, 2000);

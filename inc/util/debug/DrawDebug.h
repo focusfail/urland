@@ -14,6 +14,7 @@
 #include "game/world/World.h"
 #include "components/RigidBody.h"
 #include "components/FollowCamera.h"
+#include "components/Stats.h"
 
 #include <vector>
 #include <string>
