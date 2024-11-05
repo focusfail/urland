@@ -79,6 +79,8 @@ void Chunk::MineBlock(int blockIndex, float damage)
     block.health -= damage;
 
     if (block.health <= 0.0f) {
+        // Block was broken
+        // set block to be air
         block.id = 0;
         block.health = 1.0f;
         block.variant = 1;
@@ -89,7 +91,7 @@ void Chunk::MineBlock(int blockIndex, float damage)
         mDamagedBlocks.insert(blockIndex);
     }
 
-    mBlocksAreDirty = true;
+    // mBlocksAreDirty = true;
 }
 
 void Chunk::PlaceBlock(int blockIndex, Block& block)
