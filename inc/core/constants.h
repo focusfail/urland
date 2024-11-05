@@ -2,6 +2,7 @@
 #define CONSTANTS_H
 
 #include "raylib.h"
+#include <string>
 
 // Block width and height in pixels
 inline const int BLOCK_SIZE_PIXELS = 16;
@@ -45,5 +46,7 @@ inline const int DOWN = 2;
 inline const int WEST = 3;
 inline const int LEFT = 3;
 } // namespace Direction
+
+inline const std::string GAME_VERSION = "0.2.1";
 
 #endif // CONSTANTS_H
