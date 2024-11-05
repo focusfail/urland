@@ -18,7 +18,7 @@ struct FollowCameraSystem
     void Update(entt::registry& reg, Camera2D& camera, float dt)
     {
         reg.view<FollowCamera, PlayerTag, RigidBody>().each([&](FollowCamera& fc, RigidBody& rb) {
-            Vector2 targetPosition = {rb.x, rb.y};
+            Vector2 targetPosition = rb.GetCenter();
 
             camera.target.x += (targetPosition.x - camera.target.x) * fc.retardation * dt;
             camera.target.y += (targetPosition.y - camera.target.y) * fc.retardation * dt;
