@@ -14,7 +14,7 @@ struct BlockInfo
 
 struct Block
 {
-    unsigned int id = 1;
+    unsigned int id = 0;
     unsigned int variant = 1;
 };
 
