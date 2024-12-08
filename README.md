@@ -6,8 +6,12 @@ A terraria-like game written in C++. The game is not meant to become a complete 
 
 ## Features
 
+- Procedural generation
+![](https://github.com/focusfail/urland/blob/master/demo/generation%20(2).gif)
 - Simple entity viewer allows editing entities' components
+![](https://github.com/focusfail/urland/blob/master/demo/Screen%20Recording%202024-12-08%20130301.gif)
 - Debug window with many functions
+![](https://github.com/focusfail/urland/blob/master/demo/dbg_tools.gif)
 - Chunked rendering & update
 - Json format for block description
 
